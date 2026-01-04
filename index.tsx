@@ -4,6 +4,11 @@ import { createRoot } from 'react-dom/client';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
 
+import omniosImg from './icons/omnios.webp';
+import stresctoImg from './icons/strescto.webp';
+import iamdogImg from './icons/iamdog.webp';
+import hungrypiggyImg from './icons/hungrypiggy.webp';
+
 // Custom X (Twitter) icon component
 const XIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
@@ -109,7 +114,7 @@ const App: React.FC = () => {
                 <div className="w-32 h-32 md:w-48 md:h-48 relative flex-shrink-0">
                   <div className="absolute inset-0 bg-[#00f5ff20] blur-2xl rounded-full animate-pulse group-hover:bg-[#00f5ff40] transition-all duration-500" />
                   <img 
-                    src="icons/omnios.webp" 
+                    src={omniosImg} 
                     alt="Omni OS Icon" 
                     className="relative w-full h-full object-contain drop-shadow-[0_0_15px_rgba(0,245,255,0.3)]"
                   />
@@ -136,21 +141,21 @@ const App: React.FC = () => {
             title="streść.to"
             description="Mobile & Web summarizing platform."
             href="https://strescto.pl"
-            icon="icons/strescto.webp"
+            icon={stresctoImg}
             delay={0.4}
           />
           <ProjectCard 
             title="I Am Dog"
             description="Interactive mobile game experience."
             href="https://play.google.com/store/apps/details?id=com.ronimstudio.iamdog"
-            icon="icons/iamdog.webp"
+            icon={iamdogImg}
             delay={0.5}
           />
           <ProjectCard 
             title="Hungry Piggy"
             description="Casual mobile gaming for high-stakes fun."
             href="https://play.google.com/store/apps/details?id=com.ronimstudio.hitacoin"
-            icon="icons/hungrypiggy.webp"
+            icon={hungrypiggyImg}
             delay={0.6}
           />
           
