@@ -1,3 +1,4 @@
+
 import { Project } from './types';
 
 export const projects: Project[] = [
@@ -5,37 +6,37 @@ export const projects: Project[] = [
     id: 'omnios',
     title: 'OmniOS',
     category: 'OS / System',
-    description: "A fully local, privacy-focused operating system where AI isn't just a feature—it's the core. Semantic understanding, proactive intelligence, and privacy by design. Join the future of personal computing.",
+    description: "A fully local, privacy-first operating system where AI isn't just an add-on — it's the core. Semantic understanding, proactive intelligence, and privacy by design. Join the future of personal computing.",
     status: 'working',
     link: 'https://omniaios.com',
     releaseLabel: 'EARLY 2026',
-    // imageUrl: '/assets/omnios.png' 
+    imageUrl: '/icons/omnios.webp' 
   },
   {
     id: 'strescto',
     title: 'streść.to',
     category: 'Web/AI',
-    description: 'Intelligent tool for instant analysis and summarization of long-form text. Available on mobile and web.',
+    description: 'An intelligent tool for instant analysis and summarization of long-form text. Available across mobile and web platforms.',
     status: 'released',
     link: 'https://strescto.pl',
-    // imageUrl: '/assets/strescto.png'
+    imageUrl: '/icons/strescto.webp'
   },
   {
     id: 'iamdog',
     title: 'I Am Dog',
     category: 'Mobile Game',
-    description: "A life simulator with unique scent and exploration mechanics. Experience the world from a dog's perspective.",
+    description: "A life simulator featuring unique scent and exploration mechanics. Experience the world through the perspective of a dog.",
     status: 'released',
     link: 'https://play.google.com/store/apps/details?id=com.ronimstudio.iamdog',
-    // imageUrl: '/assets/iamdog.png'
+    imageUrl: '/icons/iamdog.webp'
   },
   {
     id: 'hungrypiggy',
     title: 'Hungry Piggy',
     category: 'Mobile Game',
-    description: 'Arcade mobile game featuring an insatiable piggy. Ragdoll physics and dynamic difficulty levels.',
+    description: 'An arcade mobile game starring an insatiable piggy. Features ragdoll physics and dynamic difficulty levels.',
     status: 'released',
     link: 'https://play.google.com/store/apps/details?id=com.ronimstudio.hitacoin',
-    // imageUrl: '/assets/hungrypiggy.png'
+    imageUrl: '/icons/hungrypiggy.webp'
   },
 ];
