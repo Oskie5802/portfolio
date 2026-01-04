@@ -138,8 +138,13 @@ export const Home: React.FC = () => {
                   </div>
                   
                   <div className="flex-1">
-                    <div className="inline-block px-3 py-1 mb-4 rounded-full border border-[#00f5ff30] bg-[#00f5ff05] text-[#00f5ff] text-[10px] uppercase tracking-widest font-bold">
-                      Coming Early 2026
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="inline-block px-3 py-1 rounded-full border border-[#00f5ff30] bg-[#00f5ff05] text-[#00f5ff] text-[10px] uppercase tracking-widest font-bold">
+                        Coming Early 2026
+                      </div>
+                      <div className="inline-block px-3 py-1 rounded-full border border-white/10 bg-white/5 text-white/60 text-[10px] uppercase tracking-widest font-bold">
+                        Co-founder
+                      </div>
                     </div>
                     <h3 className="text-4xl md:text-5xl font-bold text-white mb-4">Omni OS</h3>
                     <p className="text-[#888] text-lg leading-relaxed group-hover:text-[#ccc] transition-colors duration-300">
