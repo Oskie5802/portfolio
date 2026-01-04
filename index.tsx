@@ -1,16 +1,196 @@
+
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import './styles.css';
+import { createRoot } from 'react-dom/client';
+import { motion } from 'framer-motion';
+import { Github, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
 
-const rootElement = document.getElementById('root');
-if (!rootElement) {
-  throw new Error("Could not find root element to mount to");
-}
-
-const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+// Custom X (Twitter) icon component
+const XIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
 );
+
+const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) => (
+  <a 
+    href={href} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="p-3 rounded-full bg-white/5 hover:bg-[#00f5ff20] hover:text-[#00f5ff] transition-all duration-300 text-[#666]"
+    aria-label={label}
+  >
+    {icon}
+  </a>
+);
+
+const ProjectCard = ({ title, description, href, icon, delay }: { title: string; description: string; href: string; icon: string; delay: number }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay }}
+  >
+    <a 
+      href={href} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="group relative h-full flex items-center gap-6 p-6 rounded-3xl bg-[#111] border border-white/5 hover:border-white/10 hover:bg-[#161616] transition-all duration-300"
+    >
+      <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0 bg-[#000] rounded-2xl p-3 border border-white/5 shadow-2xl group-hover:scale-105 transition-transform duration-500">
+        <img src={icon} alt={title} className="w-full h-full object-contain" onError={(e) => {
+          (e.target as HTMLImageElement).src = 'https://via.placeholder.com/150?text=' + title[0];
+        }} />
+      </div>
+      <div>
+        <h4 className="text-xl font-bold text-white mb-1 flex items-center gap-2">
+          {title}
+          <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+        </h4>
+        <p className="text-[#666] text-sm leading-snug group-hover:text-[#aaa] transition-colors">{description}</p>
+      </div>
+    </a>
+  </motion.div>
+);
+
+const App: React.FC = () => {
+  return (
+    <div className="min-h-screen bg-[#050505] text-[#e0e0e0] selection:bg-[#00f5ff] selection:text-[#050505]">
+      {/* Background Decor */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#00f5ff10] blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-[#00f5ff05] blur-[120px] rounded-full" />
+      </div>
+
+      <main className="max-w-4xl mx-auto px-6 pt-24 pb-32 relative z-10">
+        {/* Header / Intro */}
+        <section className="mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-6 text-white leading-none">
+              Oskar Minor
+            </h1>
+            <div className="flex flex-col md:flex-row md:items-end gap-6">
+              <p className="text-xl md:text-2xl text-[#888] leading-relaxed max-w-xl">
+                16-year-old developer based in Poland. 
+                Building the future of personal computing and immersive mobile experiences.
+              </p>
+              <div className="flex gap-4">
+                <SocialLink href="https://github.com/oskie5802" icon={<Github size={20} />} label="GitHub" />
+                <SocialLink href="https://www.linkedin.com/in/oskar-minor-704245343/" icon={<Linkedin size={20} />} label="LinkedIn" />
+                <SocialLink href="https://x.com/oskarminor_" icon={<XIcon className="w-5 h-5" />} label="X" />
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Featured Project: Omni OS */}
+        <section className="mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <h2 className="text-xs uppercase tracking-[0.3em] text-[#00f5ff] font-bold mb-8">Featured OS</h2>
+            <a 
+              href="https://omniaios.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group block relative p-8 md:p-12 rounded-3xl bg-gradient-to-br from-[#111] to-[#080808] border border-white/5 hover:border-[#00f5ff50] transition-all duration-500 overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 p-8">
+                <ArrowUpRight className="text-[#333] group-hover:text-[#00f5ff] transition-colors duration-300" size={32} />
+              </div>
+              
+              <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
+                <div className="w-32 h-32 md:w-48 md:h-48 relative flex-shrink-0">
+                  <div className="absolute inset-0 bg-[#00f5ff20] blur-2xl rounded-full animate-pulse group-hover:bg-[#00f5ff40] transition-all duration-500" />
+                  <img 
+                    src="icons/omnios.webp" 
+                    alt="Omni OS Icon" 
+                    className="relative w-full h-full object-contain drop-shadow-[0_0_15px_rgba(0,245,255,0.3)]"
+                    onError={(e) => { (e.target as HTMLImageElement).src = 'https://via.placeholder.com/200?text=OmniOS'; }}
+                  />
+                </div>
+                
+                <div className="flex-1">
+                  <div className="inline-block px-3 py-1 mb-4 rounded-full border border-[#00f5ff30] bg-[#00f5ff05] text-[#00f5ff] text-[10px] uppercase tracking-widest font-bold">
+                    Coming Early 2026
+                  </div>
+                  <h3 className="text-4xl md:text-5xl font-bold text-white mb-4">Omni OS</h3>
+                  <p className="text-[#888] text-lg leading-relaxed group-hover:text-[#ccc] transition-colors duration-300">
+                    A fully local, privacy-focused operating system where AI isn't just a feature—it's the core. 
+                    Semantic understanding, proactive intelligence, and privacy by design. Join the future of personal computing.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </motion.div>
+        </section>
+
+        {/* Other Projects */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ProjectCard 
+            title="streść.to"
+            description="Mobile & Web summarizing platform."
+            href="https://strescto.pl"
+            icon="icons/strescto.webp"
+            delay={0.4}
+          />
+          <ProjectCard 
+            title="I Am Dog"
+            description="Interactive mobile game experience."
+            href="https://play.google.com/store/apps/details?id=com.ronimstudio.iamdog"
+            icon="icons/iamdog.webp"
+            delay={0.5}
+          />
+          <ProjectCard 
+            title="Hungry Piggy"
+            description="Casual mobile gaming for high-stakes fun."
+            href="https://play.google.com/store/apps/details?id=com.ronimstudio.hitacoin"
+            icon="icons/hungrypiggy.webp"
+            delay={0.6}
+          />
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.7 }}
+            className="flex flex-col justify-center items-center p-8 rounded-3xl border border-dashed border-white/10 text-center hover:bg-white/[0.02] transition-colors cursor-default"
+          >
+            <p className="text-[#444] italic mb-2">More coming soon...</p>
+            <div className="w-1 h-1 rounded-full bg-[#333]" />
+          </motion.div>
+        </section>
+
+        {/* Footer */}
+        <footer className="mt-32 pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="text-[#444] text-sm tracking-widest uppercase">
+            &copy; 2026 Oskar Minor
+          </div>
+          
+          <a 
+            href="mailto:minoroskar2009@gmail.com" 
+            className="group flex items-center gap-3 text-[#888] hover:text-white transition-colors"
+          >
+            <Mail size={18} className="group-hover:text-[#00f5ff] transition-colors" />
+            <span className="font-medium text-sm md:text-base">minoroskar2009@gmail.com</span>
+          </a>
+
+          <div className="flex gap-6 text-[#444]">
+            <a href="https://x.com/oskarminor_" target="_blank" className="hover:text-white transition-colors">X</a>
+            <a href="https://github.com/oskie5802" target="_blank" className="hover:text-white transition-colors">GitHub</a>
+            <a href="https://www.linkedin.com/in/oskar-minor-704245343/" target="_blank" className="hover:text-white transition-colors">LinkedIn</a>
+          </div>
+        </footer>
+      </main>
+    </div>
+  );
+};
+
+const container = document.getElementById('root');
+if (container) {
+  const root = createRoot(container);
+  root.render(<App />);
+}
