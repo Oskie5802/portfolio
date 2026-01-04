@@ -1,84 +1,115 @@
-
 import React from 'react';
-import { Background } from './components/Background';
-import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { ProjectCard } from './components/ProjectCard';
-import { Footer } from './components/Footer';
-import { projects } from './data';
-import { motion } from 'framer-motion';
 
-const App: React.FC = () => {
+const ArrowIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 11L11 1M11 1H2M11 1V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+export default function App() {
   return (
-    <div className="relative min-h-screen bg-transparent selection:bg-acid selection:text-black">
-      <Background />
-      <Header />
-      
-      <main className="max-w-[1800px] mx-auto w-full">
-        <Hero />
-        
-        <section id="projects" className="px-6 md:px-12 py-32 min-h-screen">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-12"
-          >
-            <div>
-              <span className="font-mono text-acid text-sm tracking-[0.4em] uppercase block mb-4">Portfolio</span>
-              <h2 className="font-display text-7xl md:text-[10vw] font-black text-offwhite leading-[0.8] tracking-tighter uppercase">
-                Selected<br/>Works
-              </h2>
-            </div>
-            <div className="font-mono text-concrete text-right hidden md:block uppercase text-xs tracking-widest leading-loose">
-              01 — Digital Systems<br/>
-              02 — Mobile Gaming<br/>
-              03 — AI Solutions
-            </div>
-          </motion.div>
+    <>
+      <div className="ambient-background">
+        <div className="blob blob-1"></div>
+        <div className="blob blob-2"></div>
+        <div className="blob blob-3"></div>
+      </div>
 
-          <div className="flex flex-col">
-            {projects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
-            ))}
+      <div className="layout">
+        <header>
+          <h1 className="name">Oskar Minor</h1>
+          <p className="bio">
+            I'm a <span className="bio-highlight">16-year-old developer</span> based in Poland. 
+            Creator of immersive digital experiences and next-gen software.
+          </p>
+        </header>
+
+        <main className="grid">
+          {/* Featured Project: OmniOS */}
+          <a href="https://omniaios.com" target="_blank" rel="noopener noreferrer" className="card featured">
+            <div className="card-top">
+              <img src="./icons/omnios.webp" alt="OmniOS" className="project-icon" />
+              <div className="status-badge">
+                <div className="status-dot"></div>
+                Coming Early 2026
+              </div>
+            </div>
+            <div className="card-main">
+              <h2 className="project-title">OmniOS</h2>
+              <p className="project-desc">
+                A fully local, privacy-focused operating system where AI isn't just a feature—it's the core. 
+                Redefining personal computing with semantic intelligence and proactive design.
+              </p>
+            </div>
+            <div className="card-link">
+              omniaios.com <ArrowIcon />
+            </div>
+          </a>
+
+          {/* Project: I Am Dog */}
+          <a href="https://play.google.com/store/apps/details?id=com.ronimstudio.iamdog" target="_blank" rel="noopener noreferrer" className="card standard">
+            <div className="card-top">
+              <img src="./icons/iamdog.webp" alt="I Am Dog" className="project-icon" />
+            </div>
+            <div className="card-main">
+              <h2 className="project-title">I Am Dog</h2>
+              <p className="project-desc">
+                Experience life as a dog in this immersive mobile simulation game. Explore, play, and survive.
+              </p>
+            </div>
+            <div className="card-link">
+              Play Store <ArrowIcon />
+            </div>
+          </a>
+
+          {/* Project: Hungry Piggy */}
+          <a href="https://play.google.com/store/apps/details?id=com.ronimstudio.hitacoin" target="_blank" rel="noopener noreferrer" className="card standard">
+            <div className="card-top">
+              <img src="./icons/hungrypiggy.webp" alt="Hungry Piggy" className="project-icon" />
+            </div>
+            <div className="card-main">
+              <h2 className="project-title">Hungry Piggy</h2>
+              <p className="project-desc">
+                A fast-paced arcade game. Feed the piggy, avoid obstacles, and set new high scores.
+              </p>
+            </div>
+            <div className="card-link">
+              Play Store <ArrowIcon />
+            </div>
+          </a>
+
+          {/* Project: strescto */}
+          <a href="https://strescto.pl" target="_blank" rel="noopener noreferrer" className="card standard">
+            <div className="card-top">
+              <img src="./icons/strescto.webp" alt="streść.to" className="project-icon" />
+            </div>
+            <div className="card-main">
+              <h2 className="project-title">streść.to</h2>
+              <p className="project-desc">
+                Intelligent summarization tool for Polish students. Save time with AI-powered text analysis.
+              </p>
+            </div>
+            <div className="card-link">
+              strescto.pl <ArrowIcon />
+            </div>
+          </a>
+        </main>
+
+        <footer>
+          <div>
+            <a href="mailto:minoroskar2009@gmail.com" className="contact-email">minoroskar2009@gmail.com</a>
+            <div className="copyright">
+               © 2026 Oskar Minor
+            </div>
           </div>
-        </section>
-
-        <section id="about" className="px-6 md:px-12 py-40 bg-white/5 backdrop-blur-3xl border-y border-white/5">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
-                <div className="sticky top-32">
-                   <span className="font-mono text-acid text-sm tracking-[0.4em] uppercase block mb-6">Manifesto</span>
-                   <h2 className="font-display text-6xl md:text-8xl font-black text-offwhite tracking-tighter leading-[0.9] uppercase">
-                    About<br/>Me
-                   </h2>
-                   <div className="mt-12 flex gap-4">
-                     <div className="w-16 h-1 bg-acid" />
-                     <div className="w-8 h-1 bg-white/10" />
-                     <div className="w-4 h-1 bg-white/10" />
-                   </div>
-                </div>
-                <div className="space-y-12">
-                    <p className="font-display text-2xl md:text-4xl text-offwhite leading-tight font-medium">
-                        I am 16 years old and I've been coding as long as I can remember. Mediocrity doesn't interest me.
-                    </p>
-                    <p className="font-mono text-concrete text-lg md:text-xl leading-relaxed">
-                        In my projects, I strive for perfection, blending advanced engineering with bold design. 
-                        I believe software should not only be functional but also evoke emotion and curiosity.
-                    </p>
-                    <div className="p-8 border border-acid/20 rounded-2xl bg-acid/5 backdrop-blur-md">
-                      <p className="font-mono text-offwhite text-lg leading-relaxed">
-                        My primary focus is <span className="text-acid font-bold">OmniOS</span> — a system that will redefine our perception of privacy and artificial intelligence in daily life.
-                      </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-      </main>
-
-      <Footer />
-    </div>
+          
+          <div className="socials">
+            <a href="https://x.com/oskarminor" target="_blank" rel="noopener noreferrer" className="social-link">X</a>
+            <a href="https://www.linkedin.com/in/oskar-minor-704245343/" target="_blank" rel="noopener noreferrer" className="social-link">LinkedIn</a>
+            <a href="https://github.com/oskie5802" target="_blank" rel="noopener noreferrer" className="social-link">GitHub</a>
+          </div>
+        </footer>
+      </div>
+    </>
   );
-};
-
-export default App;
+}
