@@ -7,6 +7,7 @@ import stresctoImg from '../icons/strescto.webp';
 import iamdogImg from '../icons/iamdog.webp';
 import hungrypiggyImg from '../icons/hungrypiggy.webp';
 import meImg from '../icons/me.jpeg';
+import moturImg from '../icons/motur.webp';
 import { Background } from '../components/Background';
 
 // Custom X (Twitter) icon component
@@ -172,6 +173,12 @@ export const Home: React.FC = () => {
           {/* Other Projects */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ProjectCard 
+              title="Motur"
+              description="Social platform for motorcycle enthusiasts."
+              href="https://play.google.com/store/apps/details?id=com.ronimstudio.motar"
+              icon={moturImg}
+            />
+            <ProjectCard 
               title="streść.to"
               description="Mobile & Web summarizing platform."
               href="https://strescto.pl"
@@ -189,6 +196,7 @@ export const Home: React.FC = () => {
               href="https://play.google.com/store/apps/details?id=com.ronimstudio.hitacoin"
               icon={hungrypiggyImg}
             />
+            
             
             <motion.div
               variants={itemVariants}
