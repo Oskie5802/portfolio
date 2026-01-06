@@ -113,22 +113,24 @@ export const Home: React.FC = () => {
                     16-year-old developer based in Poland. 
                     Building the future of personal computing and immersive mobile experiences.
                   </p>
-                  <div className="flex gap-4">
-                    <SocialLink href="https://github.com/oskie5802" icon={<Github size={20} />} label="GitHub" />
-                    <SocialLink href="https://www.linkedin.com/in/oskar-minor-704245343/" icon={<Linkedin size={20} />} label="LinkedIn" />
-                    <SocialLink href="https://x.com/oskarminor_" icon={<XIcon className="w-5 h-5" />} label="X" />
-                    <SocialLink href="https://play.google.com/store/apps/dev?id=7728087098258584312" icon={<GooglePlayIcon className="w-5 h-5" />} label="CEO ronimstudio" />
-                  </div>
                 </div>
               </div>
 
-              <div className="relative w-32 h-32 md:w-48 md:h-48 flex-shrink-0 mx-auto md:mx-0 order-first md:order-last mb-6 md:mb-0">
-                 <div className="absolute inset-0 bg-[#00f5ff20] rounded-full blur-xl animate-pulse" />
-                 <img 
-                   src={meImg} 
-                   alt="Oskar Minor" 
-                   className="relative w-full h-full object-cover rounded-full border-2 border-white/10 shadow-2xl"
-                 />
+              <div className="flex flex-col items-center md:items-end gap-6 order-first md:order-last mb-6 md:mb-0">
+                <div className="relative w-32 h-32 md:w-48 md:h-48 flex-shrink-0">
+                   <div className="absolute inset-0 bg-[#00f5ff20] rounded-full blur-xl animate-pulse" />
+                   <img 
+                     src={meImg} 
+                     alt="Oskar Minor" 
+                     className="relative w-full h-full object-cover rounded-full border-2 border-white/10 shadow-2xl"
+                   />
+                </div>
+                <div className="flex gap-4">
+                  <SocialLink href="https://github.com/oskie5802" icon={<Github size={20} />} label="GitHub" />
+                  <SocialLink href="https://www.linkedin.com/in/oskar-minor-704245343/" icon={<Linkedin size={20} />} label="LinkedIn" />
+                  <SocialLink href="https://x.com/oskarminor_" icon={<XIcon className="w-5 h-5" />} label="X" />
+                  <SocialLink href="https://play.google.com/store/apps/dev?id=7728087098258584312" icon={<GooglePlayIcon className="w-5 h-5" />} label="CEO ronimstudio" />
+                </div>
               </div>
             </motion.div>
           </section>
