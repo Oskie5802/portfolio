@@ -60,7 +60,7 @@ const itemVariants: Variants = {
   }
 };
 
-const ProjectCard = ({ title, description, href, icon }: { title: string; description: string; href: string; icon: string }) => (
+const ProjectCard = ({ title, description, href, icon, role }: { title: string; description: string; href: string; icon: string; role?: string }) => (
   <motion.div variants={itemVariants}>
     <a 
       href={href} 
@@ -84,6 +84,7 @@ const ProjectCard = ({ title, description, href, icon }: { title: string; descri
           <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
         </h4>
         <p className="text-[#666] text-sm leading-snug group-hover:text-[#aaa] transition-colors">{description}</p>
+        {role && <span className="sr-only">{role}</span>}
       </div>
     </a>
   </motion.div>
@@ -166,6 +167,7 @@ export const Home: React.FC = () => {
                       <div className="inline-block px-3 py-1 rounded-full border border-white/10 bg-white/5 text-white/60 text-[10px] uppercase tracking-widest font-bold">
                         Co-founder
                       </div>
+                      <span className="sr-only">Co-Founder with Mikołaj Piech</span>
                     </div>
                     <h3 className="text-4xl md:text-5xl font-bold text-white mb-4">Omni OS</h3>
                     <p className="text-[#888] text-lg leading-relaxed group-hover:text-[#ccc] transition-colors duration-300">
@@ -185,26 +187,29 @@ export const Home: React.FC = () => {
               description="Social platform for motorcycle enthusiasts."
               href="https://play.google.com/store/apps/details?id=com.ronimstudio.motar"
               icon={moturImg}
+              role="Creator & CEO ronimstudio"
             />
             <ProjectCard 
               title="streść.to"
               description="Mobile & Web summarizing platform."
               href="https://strescto.pl"
               icon={stresctoImg}
+              role="Founder"
             />
             <ProjectCard 
               title="I Am Dog"
               description="Interactive mobile game experience."
               href="https://play.google.com/store/apps/details?id=com.ronimstudio.iamdog"
               icon={iamdogImg}
+              role="Creator & CEO ronimstudio"
             />
             <ProjectCard 
               title="Hungry Piggy"
               description="Casual mobile gaming for high-stakes fun."
               href="https://play.google.com/store/apps/details?id=com.ronimstudio.hitacoin"
               icon={hungrypiggyImg}
+              role="Creator & CEO ronimstudio"
             />
-            
             
             <motion.div
               variants={itemVariants}
