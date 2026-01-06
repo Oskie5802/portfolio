@@ -6,6 +6,7 @@ import omniosImg from '../icons/omnios.webp';
 import stresctoImg from '../icons/strescto.webp';
 import iamdogImg from '../icons/iamdog.webp';
 import hungrypiggyImg from '../icons/hungrypiggy.webp';
+import meImg from '../icons/me.jpeg';
 import { Background } from '../components/Background';
 
 // Custom X (Twitter) icon component
@@ -93,20 +94,31 @@ export const Home: React.FC = () => {
         >
           {/* Header / Intro */}
           <section className="mb-24">
-            <motion.div variants={itemVariants}>
-              <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-6 text-white leading-none">
-                Oskar Minor
-              </h1>
-              <div className="flex flex-col md:flex-row md:items-end gap-6">
-                <p className="text-xl md:text-2xl text-[#888] leading-relaxed max-w-xl">
-                  16-year-old developer based in Poland. 
-                  Building the future of personal computing and immersive mobile experiences.
-                </p>
-                <div className="flex gap-4">
-                  <SocialLink href="https://github.com/oskie5802" icon={<Github size={20} />} label="GitHub" />
-                  <SocialLink href="https://www.linkedin.com/in/oskar-minor-704245343/" icon={<Linkedin size={20} />} label="LinkedIn" />
-                  <SocialLink href="https://x.com/oskarminor_" icon={<XIcon className="w-5 h-5" />} label="X" />
+            <motion.div variants={itemVariants} className="flex flex-col md:flex-row gap-8 md:items-start justify-between">
+              <div className="flex-1">
+                <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-6 text-white leading-none">
+                  Oskar Minor
+                </h1>
+                <div className="flex flex-col md:flex-row md:items-end gap-6">
+                  <p className="text-xl md:text-2xl text-[#888] leading-relaxed max-w-xl">
+                    16-year-old developer based in Poland. 
+                    Building the future of personal computing and immersive mobile experiences.
+                  </p>
+                  <div className="flex gap-4">
+                    <SocialLink href="https://github.com/oskie5802" icon={<Github size={20} />} label="GitHub" />
+                    <SocialLink href="https://www.linkedin.com/in/oskar-minor-704245343/" icon={<Linkedin size={20} />} label="LinkedIn" />
+                    <SocialLink href="https://x.com/oskarminor_" icon={<XIcon className="w-5 h-5" />} label="X" />
+                  </div>
                 </div>
+              </div>
+
+              <div className="relative w-32 h-32 md:w-48 md:h-48 flex-shrink-0 mx-auto md:mx-0 order-first md:order-last mb-6 md:mb-0">
+                 <div className="absolute inset-0 bg-[#00f5ff20] rounded-full blur-xl animate-pulse" />
+                 <img 
+                   src={meImg} 
+                   alt="Oskar Minor" 
+                   className="relative w-full h-full object-cover rounded-full border-2 border-white/10 shadow-2xl"
+                 />
               </div>
             </motion.div>
           </section>
