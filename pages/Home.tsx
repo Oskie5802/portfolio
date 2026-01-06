@@ -17,6 +17,13 @@ const XIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+// Custom Google Play icon component
+const GooglePlayIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+    <path d="M5.18 1.41c-.24.13-.43.34-.54.6L4.2 2.89l8.64 8.64 3.73-3.73-11.39-6.39zm12.37 6.39L13.84 11.5l3.74 3.74 1.34-1.34c.48-.48.48-1.26 0-1.74l-1.37-1.36zM3.8 3.29l-.02.02c-.13.33-.2.69-.2 1.07v15.24c0 .38.07.74.2 1.07l.02.02L13.13 11.5 3.8 3.29zM4.64 21.99c.11.26.3.47.54.6l11.39-6.39-3.73-3.73-8.64 8.64.44.88z" />
+  </svg>
+);
+
 const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) => (
   <a 
     href={href} 
@@ -109,6 +116,7 @@ export const Home: React.FC = () => {
                     <SocialLink href="https://github.com/oskie5802" icon={<Github size={20} />} label="GitHub" />
                     <SocialLink href="https://www.linkedin.com/in/oskar-minor-704245343/" icon={<Linkedin size={20} />} label="LinkedIn" />
                     <SocialLink href="https://x.com/oskarminor_" icon={<XIcon className="w-5 h-5" />} label="X" />
+                    <SocialLink href="https://play.google.com/store/apps/dev?id=7728087098258584312" icon={<GooglePlayIcon className="w-5 h-5" />} label="CEO ronimstudio" />
                   </div>
                 </div>
               </div>
