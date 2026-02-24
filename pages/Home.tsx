@@ -171,10 +171,9 @@ export const Home: React.FC = () => {
                       </div>
                       <span className="sr-only">Co-Founder with Mikołaj Piech</span>
                     </div>
-                    <h3 className="text-4xl md:text-5xl font-bold text-white mb-4">Omni OS</h3>
+                    <h3 className="text-4xl md:text-5xl font-bold text-white mb-4">Omni</h3>
                     <p className="text-[#888] text-lg leading-relaxed group-hover:text-[#ccc] transition-colors duration-300">
-                      A fully local, privacy-focused operating system where AI isn't just a feature—it's the core. 
-                      Semantic understanding, proactive intelligence, and privacy by design. Join the future of personal computing.
+                     Omni finds your lost files, installs apps, manages your email and calendar, and almost anything else – just by asking.
                     </p>
                   </div>
                 </div>
