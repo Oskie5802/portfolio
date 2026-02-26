@@ -8,6 +8,7 @@ import iamdogImg from '../icons/iamdog.webp';
 import hungrypiggyImg from '../icons/hungrypiggy.webp';
 import meImg from '../icons/me.jpeg';
 import moturImg from '../icons/motur.webp';
+import keepyImg from '../icons/keepy.png';
 import { Background } from '../components/Background';
 
 // Custom X (Twitter) icon component
@@ -183,6 +184,13 @@ export const Home: React.FC = () => {
 
           {/* Other Projects */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <ProjectCard 
+              title="Keepy"
+              description="Receipt & Warranty manager."
+              href="https://play.google.com/store/apps/details?id=com.ronimstudio.keepy&hl=pl"
+              icon={keepyImg}
+              role="Creator & CEO ronimstudio"
+            />
             <ProjectCard 
               title="Motur"
               description="Social platform for motorcycle enthusiasts."
