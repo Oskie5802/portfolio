@@ -139,9 +139,9 @@ export const Home: React.FC = () => {
           {/* Featured Project: Omni OS */}
           <section className="mb-16">
             <motion.div variants={itemVariants}>
-              <h2 className="text-xs uppercase tracking-[0.3em] text-[#00f5ff] font-bold mb-8">Featured OS</h2>
+              <h2 className="text-xs uppercase tracking-[0.3em] text-[#00f5ff] font-bold mb-8">Featured project</h2>
               <a 
-                href="https://omniaios.com" 
+                href="https://heyomni.app" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group block relative p-8 md:p-12 rounded-3xl bg-gradient-to-br from-[#111] to-[#080808] border border-white/5 hover:border-[#00f5ff50] transition-all duration-500 overflow-hidden"
