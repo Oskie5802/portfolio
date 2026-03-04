@@ -129,14 +129,14 @@ export const Home: React.FC = () => {
                 <div className="flex gap-4">
                   <SocialLink href="https://github.com/oskie5802" icon={<Github size={20} />} label="GitHub" />
                   <SocialLink href="https://www.linkedin.com/in/oskar-minor-704245343/" icon={<Linkedin size={20} />} label="LinkedIn" />
-                  <SocialLink href="https://x.com/oskarminor_" icon={<XIcon className="w-5 h-5" />} label="X" />
+                  <SocialLink href="https://x.com/oskarminor" icon={<XIcon className="w-5 h-5" />} label="X" />
                   <SocialLink href="https://play.google.com/store/apps/dev?id=7728087098258584312" icon={<GooglePlayIcon className="w-5 h-5" />} label="CEO ronimstudio" />
                 </div>
               </div>
             </motion.div>
           </section>
 
-          {/* Featured Project: Omni OS */}
+          {/* Featured Project: Omni*/}
           <section className="mb-16">
             <motion.div variants={itemVariants}>
               <h2 className="text-xs uppercase tracking-[0.3em] text-[#00f5ff] font-bold mb-8">Featured project</h2>
@@ -157,7 +157,7 @@ export const Home: React.FC = () => {
                     <div className="absolute inset-0 bg-[#00f5ff20] blur-2xl rounded-full animate-pulse group-hover:bg-[#00f5ff40] transition-all duration-500" />
                     <img 
                       src={omniosImg} 
-                      alt="Omni OS Icon" 
+                      alt="Omni Icon" 
                       className="relative w-full h-full object-contain drop-shadow-[0_0_15px_rgba(0,245,255,0.3)] group-hover:scale-110 transition-transform duration-500 ease-out"
                     />
                   </div>
@@ -245,7 +245,7 @@ export const Home: React.FC = () => {
               </a>
 
               <div className="flex gap-6 text-[#444]">
-                <a href="https://x.com/oskarminor_" target="_blank" className="hover:text-white transition-colors">X</a>
+                <a href="https://x.com/oskarminor" target="_blank" className="hover:text-white transition-colors">X</a>
                 <a href="https://github.com/oskie5802" target="_blank" className="hover:text-white transition-colors">GitHub</a>
                 <a href="https://www.linkedin.com/in/oskar-minor-704245343/" target="_blank" className="hover:text-white transition-colors">LinkedIn</a>
               </div>
