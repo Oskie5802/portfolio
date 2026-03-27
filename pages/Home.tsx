@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight, Music } from 'lucide-react';
 
 import omniosImg from '../icons/omnios.webp';
 import stresctoImg from '../icons/strescto.webp';
@@ -56,12 +56,12 @@ const itemVariants: Variants = {
     scale: 1,
     transition: {
       duration: 1.2,
-      ease: [0.22, 1, 0.36, 1]
+      ease:[0.22, 1, 0.36, 1]
     }
   }
 };
 
-const ProjectCard = ({ title, description, href, icon, role }: { title: string; description: string; href: string; icon: string; role?: string }) => (
+const ProjectCard = ({ title, description, href, icon, iconNode, role }: { title: string; description: string; href: string; icon?: string; iconNode?: React.ReactNode; role?: string }) => (
   <motion.div variants={itemVariants}>
     <a 
       href={href} 
@@ -73,11 +73,13 @@ const ProjectCard = ({ title, description, href, icon, role }: { title: string; 
       <div className="absolute inset-0 bg-gradient-to-br from-[#00f5ff05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0 bg-[#000] rounded-2xl p-3 border border-white/5 shadow-2xl group-hover:scale-105 transition-transform duration-500 flex items-center justify-center relative z-10">
-        <img 
-          src={icon} 
-          alt={title} 
-          className="w-full h-full object-contain"
-        />
+        {icon ? (
+          <img 
+            src={icon} 
+            alt={title} 
+            className="w-full h-full object-contain"
+          />
+        ) : iconNode}
       </div>
       <div className="relative z-10">
         <h4 className="text-xl font-bold text-white mb-1 flex items-center gap-2">
@@ -111,8 +113,8 @@ export const Home: React.FC = () => {
                 </h1>
                 <div className="flex flex-col md:flex-row md:items-end gap-6">
                   <p className="text-xl md:text-2xl text-[#888] leading-relaxed max-w-xl">
-                    16-year-old developer based in Poland. 
-                    Building the future of personal computing and immersive mobile experiences.
+                    I'm 16-year-old developer based in Poland. 
+                    If you need something, just do it yourself instead of looking for it. 
                   </p>
                 </div>
               </div>
@@ -184,6 +186,13 @@ export const Home: React.FC = () => {
 
           {/* Other Projects */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <ProjectCard 
+              title="Audio Lab"
+              description="Needed an app to play music at an event, so I built one."
+              href="https://github.com/Oskie5802/audiolab"
+              iconNode={<Music className="w-8 h-8 md:w-10 md:h-10 text-[#888] group-hover:text-[#00f5ff] transition-colors duration-300" />}
+              role="Creator"
+            />
             <ProjectCard 
               title="Keepy"
               description="Receipt & Warranty manager."
