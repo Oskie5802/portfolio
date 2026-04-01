@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowUpRight, Music } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight, Music, Shield } from 'lucide-react';
 
 import omniosImg from '../icons/omnios.webp';
 import stresctoImg from '../icons/strescto.webp';
@@ -9,6 +9,7 @@ import hungrypiggyImg from '../icons/hungrypiggy.webp';
 import meImg from '../icons/me.jpeg';
 import moturImg from '../icons/motur.webp';
 import keepyImg from '../icons/keepy.png';
+import czytajdalejImg from '../icons/czytajdalej.jpg';
 import { Background } from '../components/Background';
 
 // Custom X (Twitter) icon component
@@ -26,9 +27,9 @@ const GooglePlayIcon = ({ className }: { className?: string }) => (
 );
 
 const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) => (
-  <a 
-    href={href} 
-    target="_blank" 
+  <a
+    href={href}
+    target="_blank"
     rel="noopener noreferrer"
     className="p-3 rounded-full bg-white/5 hover:bg-[#00f5ff20] hover:text-[#00f5ff] transition-all duration-300 text-[#666]"
     aria-label={label}
@@ -50,9 +51,9 @@ const containerVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 50, scale: 0.95 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
+  visible: {
+    opacity: 1,
+    y: 0,
     scale: 1,
     transition: {
       duration: 1.2,
@@ -61,29 +62,28 @@ const itemVariants: Variants = {
   }
 };
 
-const ProjectCard = ({ title, description, href, icon, iconNode, role }: { title: string; description: string; href: string; icon?: string; iconNode?: React.ReactNode; role?: string }) => (
+const ProjectCard = ({ title, titleNode, description, href, icon, iconNode, role }: { title?: string; titleNode?: React.ReactNode; description: string; href: string; icon?: string; iconNode?: React.ReactNode; role?: string }) => (
   <motion.div variants={itemVariants}>
-    <a 
-      href={href} 
-      target="_blank" 
+    <a
+      href={href}
+      target="_blank"
       rel="noopener noreferrer"
       className="group relative h-full flex items-center gap-6 p-6 rounded-3xl bg-[#111] border border-white/5 hover:border-white/10 hover:bg-[#161616] transition-all duration-300 overflow-hidden"
     >
-      {/* Hover Gradient Effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#00f5ff05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
+
       <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0 bg-[#000] rounded-2xl p-3 border border-white/5 shadow-2xl group-hover:scale-105 transition-transform duration-500 flex items-center justify-center relative z-10">
         {icon ? (
-          <img 
-            src={icon} 
-            alt={title} 
+          <img
+            src={icon}
+            alt={title || ''}
             className="w-full h-full object-contain"
           />
         ) : iconNode}
       </div>
       <div className="relative z-10">
         <h4 className="text-xl font-bold text-white mb-1 flex items-center gap-2">
-          {title}
+          {titleNode ?? title}
           <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
         </h4>
         <p className="text-[#666] text-sm leading-snug group-hover:text-[#aaa] transition-colors">{description}</p>
@@ -99,7 +99,7 @@ export const Home: React.FC = () => {
       <Background />
 
       <main className="max-w-4xl mx-auto px-6 pt-24 pb-32 relative z-10">
-        <motion.div 
+        <motion.div
           initial="hidden"
           animate="visible"
           variants={containerVariants}
@@ -113,8 +113,8 @@ export const Home: React.FC = () => {
                 </h1>
                 <div className="flex flex-col md:flex-row md:items-end gap-6">
                   <p className="text-xl md:text-2xl text-[#888] leading-relaxed max-w-xl">
-                    I'm 16-year-old developer based in Poland. 
-                    If you need something, just do it yourself instead of looking for it. 
+                    I'm 16-year-old developer based in Poland.
+                    If you need something, just do it yourself instead of looking for it.
                   </p>
                 </div>
               </div>
@@ -122,9 +122,9 @@ export const Home: React.FC = () => {
               <div className="flex flex-col items-center md:items-end gap-6 order-first md:order-last mb-6 md:mb-0">
                 <div className="relative w-32 h-32 md:w-48 md:h-48 flex-shrink-0">
                    <div className="absolute inset-0 bg-[#00f5ff20] rounded-full blur-xl animate-pulse" />
-                   <img 
-                     src={meImg} 
-                     alt="Oskar Minor" 
+                   <img
+                     src={meImg}
+                     alt="Oskar Minor"
                      className="relative w-full h-full object-cover rounded-full border-2 border-white/10 shadow-2xl"
                    />
                 </div>
@@ -138,104 +138,161 @@ export const Home: React.FC = () => {
             </motion.div>
           </section>
 
-          {/* Featured Project: Omni*/}
+          {/* Featured Projects */}
           <section className="mb-16">
             <motion.div variants={itemVariants}>
-              <h2 className="text-xs uppercase tracking-[0.3em] text-[#00f5ff] font-bold mb-8">Featured project</h2>
-              <a 
-                href="https://heyomni.app" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group block relative p-8 md:p-12 rounded-3xl bg-gradient-to-br from-[#111] to-[#080808] border border-white/5 hover:border-[#00f5ff50] transition-all duration-500 overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,245,255,0.05),transparent_40%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="absolute top-0 right-0 p-8">
-                  <ArrowUpRight className="text-[#333] group-hover:text-[#00f5ff] transition-colors duration-300" size={32} />
-                </div>
-                
-                <div className="flex flex-col md:flex-row gap-10 items-center md:items-start relative z-10">
-                  <div className="w-32 h-32 md:w-48 md:h-48 relative flex-shrink-0">
-                    <div className="absolute inset-0 bg-[#00f5ff20] blur-2xl rounded-full animate-pulse group-hover:bg-[#00f5ff40] transition-all duration-500" />
-                    <img 
-                      src={omniosImg} 
-                      alt="Omni Icon" 
-                      className="relative w-full h-full object-contain drop-shadow-[0_0_15px_rgba(0,245,255,0.3)] group-hover:scale-110 transition-transform duration-500 ease-out"
-                    />
+              <h2 className="text-xs uppercase tracking-[0.3em] text-[#00f5ff] font-bold mb-8">Featured projects</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                {/* Omni */}
+                <a
+                  href="https://heyomni.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative p-7 rounded-3xl bg-gradient-to-br from-[#111] to-[#080808] border border-white/5 hover:border-[#00f5ff50] transition-all duration-500 overflow-hidden flex flex-col gap-6"
+                >
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,245,255,0.05),transparent_40%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute top-0 right-0 p-5">
+                    <ArrowUpRight className="text-[#333] group-hover:text-[#00f5ff] transition-colors duration-300" size={22} />
                   </div>
-                  
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="inline-block px-3 py-1 rounded-full border border-[#00f5ff30] bg-[#00f5ff05] text-[#00f5ff] text-[10px] uppercase tracking-widest font-bold">
-                        Coming Early 2026
-                      </div>
-                      <div className="inline-block px-3 py-1 rounded-full border border-white/10 bg-white/5 text-white/60 text-[10px] uppercase tracking-widest font-bold">
-                        Co-founder
-                      </div>
-                      <span className="sr-only">Co-Founder with Mikołaj Piech</span>
+
+                  <div className="flex items-center gap-5 relative z-10">
+                    <div className="w-20 h-20 relative flex-shrink-0">
+                      <div className="absolute inset-0 bg-[#00f5ff20] blur-xl rounded-full animate-pulse group-hover:bg-[#00f5ff40] transition-all duration-500" />
+                      <img
+                        src={omniosImg}
+                        alt="Omni Icon"
+                        className="relative w-full h-full object-contain drop-shadow-[0_0_12px_rgba(0,245,255,0.3)] group-hover:scale-110 transition-transform duration-500 ease-out"
+                      />
                     </div>
-                    <h3 className="text-4xl md:text-5xl font-bold text-white mb-4">Omni</h3>
-                    <p className="text-[#888] text-lg leading-relaxed group-hover:text-[#ccc] transition-colors duration-300">
-                     Omni finds your lost files, installs apps, manages your email and calendar, and almost anything else – just by asking.
-                    </p>
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <div className="inline-block px-2.5 py-0.5 rounded-full border border-[#00f5ff30] bg-[#00f5ff05] text-[#00f5ff] text-[9px] uppercase tracking-widest font-bold">
+                          Coming Early 2026
+                        </div>
+                        <div className="inline-block px-2.5 py-0.5 rounded-full border border-white/10 bg-white/5 text-white/60 text-[9px] uppercase tracking-widest font-bold">
+                          Co-founder
+                        </div>
+                      </div>
+                      <h3 className="text-3xl font-bold text-white">Omni</h3>
+                    </div>
                   </div>
-                </div>
-              </a>
+
+                  <p className="text-[#888] text-sm leading-relaxed group-hover:text-[#ccc] transition-colors duration-300 relative z-10">
+                    Omni finds your lost files, installs apps, manages your email and calendar, and almost anything else – just by asking.
+                  </p>
+                </a>
+
+                {/* czytaj dalej */}
+                <a
+                  href="https://czytajdalej.pl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative p-7 rounded-3xl bg-[#f7f3ef] border border-[#e8e0d8] hover:border-[#c96447] transition-all duration-500 overflow-hidden flex flex-col gap-6"
+                >
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(201,100,71,0.08),transparent_50%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute top-0 right-0 p-5">
+                    <ArrowUpRight className="text-[#ccc0b8] group-hover:text-[#c96447] transition-colors duration-300" size={22} />
+                  </div>
+
+                  <div className="flex items-center gap-5 relative z-10">
+                    <div className="w-20 h-20 relative flex-shrink-0">
+                      <div className="absolute inset-0 bg-[#c9644730] blur-xl rounded-full animate-pulse group-hover:bg-[#c9644750] transition-all duration-500" />
+                      <img
+                        src={czytajdalejImg}
+                        alt="czytaj dalej Icon"
+                        className="relative w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 ease-out"
+                      />
+                    </div>
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <div className="inline-block px-2.5 py-0.5 rounded-full border border-[#c9644740] bg-[#c9644710] text-[#c96447] text-[9px] uppercase tracking-widest font-bold">
+                          Building
+                        </div>
+                        <div className="inline-block px-2.5 py-0.5 rounded-full border border-black/10 bg-black/5 text-black/50 text-[9px] uppercase tracking-widest font-bold">
+                          Founder
+                        </div>
+                      </div>
+                      <h3 className="text-3xl font-bold tracking-tight">
+                        <span style={{ color: '#1a1008' }}>czytaj</span>
+                        <span style={{ color: '#c96447' }}> dalej</span>
+                      </h3>
+                    </div>
+                  </div>
+
+                  <p className="text-[#7a6a5e] text-sm leading-relaxed group-hover:text-[#4a3a2e] transition-colors duration-300 relative z-10">
+                    Share books with people around you. Find what's worth reading – from your neighbours, not algorithms.
+                  </p>
+                </a>
+
+              </div>
             </motion.div>
           </section>
 
           {/* Other Projects */}
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <ProjectCard 
-              title="Audio Lab"
-              description="Needed an app to play music at an event, so I built one."
-              href="https://github.com/Oskie5802/audiolab"
-              iconNode={<Music className="w-8 h-8 md:w-10 md:h-10 text-[#888] group-hover:text-[#00f5ff] transition-colors duration-300" />}
-              role="Creator"
-            />
-            <ProjectCard 
-              title="Keepy"
-              description="Receipt & Warranty manager."
-              href="https://play.google.com/store/apps/details?id=com.ronimstudio.keepy&hl=pl"
-              icon={keepyImg}
-              role="Creator & CEO ronimstudio"
-            />
-            <ProjectCard 
-              title="Motur"
-              description="Social platform for motorcycle enthusiasts."
-              href="https://play.google.com/store/apps/details?id=com.ronimstudio.motar"
-              icon={moturImg}
-              role="Creator & CEO ronimstudio"
-            />
-            <ProjectCard 
-              title="streść.to"
-              description="Mobile & Web summarizing platform."
-              href="https://strescto.pl"
-              icon={stresctoImg}
-              role="Founder"
-            />
-            <ProjectCard 
-              title="I Am Dog"
-              description="Interactive mobile game experience."
-              href="https://play.google.com/store/apps/details?id=com.ronimstudio.iamdog"
-              icon={iamdogImg}
-              role="Creator & CEO ronimstudio"
-            />
-            <ProjectCard 
-              title="Hungry Piggy"
-              description="Casual mobile gaming for high-stakes fun."
-              href="https://play.google.com/store/apps/details?id=com.ronimstudio.hitacoin"
-              icon={hungrypiggyImg}
-              role="Creator & CEO ronimstudio"
-            />
-            
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col justify-center items-center p-8 rounded-3xl border border-dashed border-white/10 text-center hover:bg-white/[0.02] transition-colors cursor-default group"
-            >
-              <p className="text-[#444] italic mb-2 group-hover:text-[#666] transition-colors">More coming soon...</p>
-              <div className="w-1 h-1 rounded-full bg-[#333] group-hover:scale-150 transition-transform" />
+          <section>
+            <motion.div variants={itemVariants}>
+              <h2 className="text-xs uppercase tracking-[0.3em] text-[#555] font-bold mb-8">Projects</h2>
             </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <ProjectCard
+                title="SafeLabs"
+                description="Social safety project built with friends and presented at public events."
+                href="https://safelabs.pl"
+                iconNode={<Shield className="w-8 h-8 md:w-10 md:h-10 text-[#888] group-hover:text-[#00f5ff] transition-colors duration-300" />}
+                role="Co-creator & Public presenter"
+              />
+              <ProjectCard
+                title="streść.to"
+                description="Mobile & Web summarizing platform."
+                href="https://strescto.pl"
+                icon={stresctoImg}
+                role="Founder"
+              />
+              <ProjectCard
+                title="Keepy"
+                description="Receipt & Warranty manager."
+                href="https://play.google.com/store/apps/details?id=com.ronimstudio.keepy&hl=pl"
+                icon={keepyImg}
+                role="Creator & CEO ronimstudio"
+              />
+              <ProjectCard
+                title="Motur"
+                description="Social platform for motorcycle enthusiasts."
+                href="https://play.google.com/store/apps/details?id=com.ronimstudio.motar"
+                icon={moturImg}
+                role="Creator & CEO ronimstudio"
+              />
+              <ProjectCard
+                title="Audio Lab"
+                description="Needed an app to play music at an event, so I built one."
+                href="https://github.com/Oskie5802/audiolab"
+                iconNode={<Music className="w-8 h-8 md:w-10 md:h-10 text-[#888] group-hover:text-[#00f5ff] transition-colors duration-300" />}
+                role="Creator"
+              />
+              <ProjectCard
+                title="I Am Dog"
+                description="Interactive mobile game experience."
+                href="https://play.google.com/store/apps/details?id=com.ronimstudio.iamdog"
+                icon={iamdogImg}
+                role="Creator & CEO ronimstudio"
+              />
+              <ProjectCard
+                title="Hungry Piggy"
+                description="Casual mobile gaming for high-stakes fun."
+                href="https://play.google.com/store/apps/details?id=com.ronimstudio.hitacoin"
+                icon={hungrypiggyImg}
+                role="Creator & CEO ronimstudio"
+              />
+
+              <motion.div
+                variants={itemVariants}
+                className="flex flex-col justify-center items-center p-8 rounded-3xl border border-dashed border-white/10 text-center hover:bg-white/[0.02] transition-colors cursor-default group"
+              >
+                <p className="text-[#444] italic mb-2 group-hover:text-[#666] transition-colors">More coming soon...</p>
+                <div className="w-1 h-1 rounded-full bg-[#333] group-hover:scale-150 transition-transform" />
+              </motion.div>
+            </div>
           </section>
 
           {/* Footer */}
@@ -243,10 +300,10 @@ export const Home: React.FC = () => {
             <motion.div variants={itemVariants} className="text-[#444] text-sm tracking-widest uppercase">
               &copy; 2026 Oskar Minor
             </motion.div>
-            
+
             <motion.div variants={itemVariants} className="flex gap-6 md:gap-8 flex-col md:flex-row items-center">
-              <a 
-                href="mailto:minoroskar2009@gmail.com" 
+              <a
+                href="mailto:minoroskar2009@gmail.com"
                 className="group flex items-center gap-3 text-[#888] hover:text-white transition-colors"
               >
                 <Mail size={18} className="group-hover:text-[#00f5ff] transition-colors" />
