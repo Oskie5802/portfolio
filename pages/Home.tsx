@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion, Variants } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowUpRight, Music, Shield } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, Variants, AnimatePresence } from 'framer-motion';
+import { Github, Linkedin, Mail, ArrowUpRight, Music } from 'lucide-react';
 
 import omniosImg from '../icons/omnios.webp';
 import stresctoImg from '../icons/strescto.webp';
@@ -10,6 +10,7 @@ import meImg from '../icons/me.jpeg';
 import moturImg from '../icons/motur.webp';
 import keepyImg from '../icons/keepy.png';
 import czytajdalejImg from '../icons/czytajdalej.jpg';
+import safelabsImg from '../icons/safelabs.png';
 import { Background } from '../components/Background';
 
 // Custom X (Twitter) icon component
@@ -93,7 +94,75 @@ const ProjectCard = ({ title, titleNode, description, href, icon, iconNode, role
   </motion.div>
 );
 
+const CATEGORIES = ['All', 'Initiative', 'Web', 'Mobile', 'Desktop'] as const;
+type Category = typeof CATEGORIES[number];
+
 export const Home: React.FC = () => {
+  const [activeCategory, setActiveCategory] = useState<Category>('All');
+
+  const allProjects = [
+    {
+      title: 'SafeLabs',
+      category: 'Initiative' as Category,
+      description: 'Social safety project built with friends and presented at public events.',
+      href: 'https://safelabs.pl',
+      icon: safelabsImg,
+      role: 'Co-creator & Public presenter',
+    },
+    {
+      title: 'streść.to',
+      category: 'Web' as Category,
+      description: 'Mobile & Web summarizing platform.',
+      href: 'https://strescto.pl',
+      icon: stresctoImg,
+      role: 'Founder',
+    },
+    {
+      title: 'Keepy',
+      category: 'Mobile' as Category,
+      description: 'Receipt & Warranty manager.',
+      href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.keepy&hl=pl',
+      icon: keepyImg,
+      role: 'Creator & CEO ronimstudio',
+    },
+    {
+      title: 'Motur',
+      category: 'Mobile' as Category,
+      description: 'Social platform for motorcycle enthusiasts.',
+      href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.motar',
+      icon: moturImg,
+      role: 'Creator & CEO ronimstudio',
+    },
+    {
+      title: 'I Am Dog',
+      category: 'Mobile' as Category,
+      description: 'Interactive mobile game experience.',
+      href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.iamdog',
+      icon: iamdogImg,
+      role: 'Creator & CEO ronimstudio',
+    },
+    {
+      title: 'Hungry Piggy',
+      category: 'Mobile' as Category,
+      description: 'Casual mobile gaming for high-stakes fun.',
+      href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.hitacoin',
+      icon: hungrypiggyImg,
+      role: 'Creator & CEO ronimstudio',
+    },
+    {
+      title: 'Audio Lab',
+      category: 'Desktop' as Category,
+      description: 'Needed an app to play music at an event, so I built one.',
+      href: 'https://github.com/Oskie5802/audiolab',
+      iconNode: <Music className="w-8 h-8 md:w-10 md:h-10 text-[#888] group-hover:text-[#00f5ff] transition-colors duration-300" />,
+      role: 'Creator',
+    },
+  ];
+
+  const filteredProjects = activeCategory === 'All'
+    ? allProjects
+    : allProjects.filter(p => p.category === activeCategory);
+
   return (
     <div className="min-h-screen bg-[#050505] text-[#e0e0e0] selection:bg-[#00f5ff] selection:text-[#050505]">
       <Background />
@@ -185,7 +254,7 @@ export const Home: React.FC = () => {
 
                 {/* czytaj dalej */}
                 <a
-                  href="https://czytajdalej.pl"
+                  href="https://czytajdalej.app"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative p-7 rounded-3xl bg-[#f7f3ef] border border-[#e8e0d8] hover:border-[#c96447] transition-all duration-500 overflow-hidden flex flex-col gap-6"
@@ -214,8 +283,7 @@ export const Home: React.FC = () => {
                         </div>
                       </div>
                       <h3 className="text-3xl font-bold tracking-tight">
-                        <span style={{ color: '#1a1008' }}>czytaj</span>
-                        <span style={{ color: '#c96447' }}> dalej</span>
+                        <span style={{ color: '#1a1008' }}>czytaj</span><span style={{ color: '#c96447' }}>dalej</span>
                       </h3>
                     </div>
                   </div>
@@ -231,68 +299,39 @@ export const Home: React.FC = () => {
 
           {/* Other Projects */}
           <section>
-            <motion.div variants={itemVariants}>
-              <h2 className="text-xs uppercase tracking-[0.3em] text-[#555] font-bold mb-8">Projects</h2>
+            <motion.div variants={itemVariants} className="flex flex-col gap-6 mb-8">
+              <h2 className="text-xs uppercase tracking-[0.3em] text-[#555] font-bold">Projects</h2>
+              <div className="flex flex-wrap gap-2">
+                {CATEGORIES.map(cat => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold transition-all duration-200 border ${
+                      activeCategory === cat
+                        ? 'bg-white/8 text-white border-white/15'
+                        : 'text-[#444] border-transparent hover:text-[#777] hover:border-white/5'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
             </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <ProjectCard
-                title="SafeLabs"
-                description="Social safety project built with friends and presented at public events."
-                href="https://safelabs.pl"
-                iconNode={<Shield className="w-8 h-8 md:w-10 md:h-10 text-[#888] group-hover:text-[#00f5ff] transition-colors duration-300" />}
-                role="Co-creator & Public presenter"
-              />
-              <ProjectCard
-                title="streść.to"
-                description="Mobile & Web summarizing platform."
-                href="https://strescto.pl"
-                icon={stresctoImg}
-                role="Founder"
-              />
-              <ProjectCard
-                title="Keepy"
-                description="Receipt & Warranty manager."
-                href="https://play.google.com/store/apps/details?id=com.ronimstudio.keepy&hl=pl"
-                icon={keepyImg}
-                role="Creator & CEO ronimstudio"
-              />
-              <ProjectCard
-                title="Motur"
-                description="Social platform for motorcycle enthusiasts."
-                href="https://play.google.com/store/apps/details?id=com.ronimstudio.motar"
-                icon={moturImg}
-                role="Creator & CEO ronimstudio"
-              />
-              <ProjectCard
-                title="Audio Lab"
-                description="Needed an app to play music at an event, so I built one."
-                href="https://github.com/Oskie5802/audiolab"
-                iconNode={<Music className="w-8 h-8 md:w-10 md:h-10 text-[#888] group-hover:text-[#00f5ff] transition-colors duration-300" />}
-                role="Creator"
-              />
-              <ProjectCard
-                title="I Am Dog"
-                description="Interactive mobile game experience."
-                href="https://play.google.com/store/apps/details?id=com.ronimstudio.iamdog"
-                icon={iamdogImg}
-                role="Creator & CEO ronimstudio"
-              />
-              <ProjectCard
-                title="Hungry Piggy"
-                description="Casual mobile gaming for high-stakes fun."
-                href="https://play.google.com/store/apps/details?id=com.ronimstudio.hitacoin"
-                icon={hungrypiggyImg}
-                role="Creator & CEO ronimstudio"
-              />
 
+            <AnimatePresence mode="wait">
               <motion.div
-                variants={itemVariants}
-                className="flex flex-col justify-center items-center p-8 rounded-3xl border border-dashed border-white/10 text-center hover:bg-white/[0.02] transition-colors cursor-default group"
+                key={activeCategory}
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                exit={{ opacity: 0, transition: { duration: 0.12 } }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-6"
               >
-                <p className="text-[#444] italic mb-2 group-hover:text-[#666] transition-colors">More coming soon...</p>
-                <div className="w-1 h-1 rounded-full bg-[#333] group-hover:scale-150 transition-transform" />
+                {filteredProjects.map(project => (
+                  <ProjectCard key={project.title} {...project} />
+                ))}
               </motion.div>
-            </div>
+            </AnimatePresence>
           </section>
 
           {/* Footer */}
