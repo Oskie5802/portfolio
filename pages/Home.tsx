@@ -9,7 +9,7 @@ import hungrypiggyImg from '../icons/hungrypiggy.webp';
 import meImg from '../icons/me.jpeg';
 import moturImg from '../icons/motur.webp';
 import keepyImg from '../icons/keepy.png';
-import czytajdalejImg from '../icons/czytajdalej.jpg';
+import czytajdalejImg from '../icons/czytajdalej.png';
 import safelabsImg from '../icons/safelabs.png';
 import { Background } from '../components/Background';
 
@@ -63,7 +63,17 @@ const itemVariants: Variants = {
   }
 };
 
-const ProjectCard = ({ title, titleNode, description, href, icon, iconNode, role }: { title?: string; titleNode?: React.ReactNode; description: string; href: string; icon?: string; iconNode?: React.ReactNode; role?: string }) => (
+type ProjectCardProps = {
+  title?: string;
+  titleNode?: React.ReactNode;
+  description: string;
+  href: string;
+  icon?: string;
+  iconNode?: React.ReactNode;
+  role?: string;
+};
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, titleNode, description, href, icon, iconNode, role }) => (
   <motion.div variants={itemVariants}>
     <a
       href={href}
@@ -94,7 +104,7 @@ const ProjectCard = ({ title, titleNode, description, href, icon, iconNode, role
   </motion.div>
 );
 
-const CATEGORIES = ['All', 'Initiative', 'Web', 'Mobile', 'Desktop'] as const;
+const CATEGORIES = ['All', 'Social', 'Web', 'Mobile', 'Desktop'] as const;
 type Category = typeof CATEGORIES[number];
 
 export const Home: React.FC = () => {
@@ -103,7 +113,7 @@ export const Home: React.FC = () => {
   const allProjects = [
     {
       title: 'SafeLabs',
-      category: 'Initiative' as Category,
+      category: 'Social' as Category,
       description: 'Social safety project built with friends and presented at public events.',
       href: 'https://safelabs.pl',
       icon: safelabsImg,
