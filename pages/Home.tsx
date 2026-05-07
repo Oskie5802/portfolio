@@ -119,7 +119,7 @@ export const Home: React.FC = () => {
     {
       title: 'streść.to',
       category: 'Web' as Category,
-      description: 'Understand any Polish school reading in minutes – character profiles, plot breakdowns and key themes in one place.',
+      description: 'Understand any Polish school reading in minutes - character profiles, plot breakdowns and key themes in one place.',
       href: 'https://strescto.pl',
       icon: stresctoImg,
       role: 'Founder',
@@ -143,7 +143,7 @@ export const Home: React.FC = () => {
     {
       title: 'I Am Dog',
       category: 'Mobile' as Category,
-      description: 'Dog simulator for kids – explore the world as a dog, complete missions and unlock new levels.',
+      description: 'Dog simulator for kids - explore the world as a dog, complete missions and unlock new levels.',
       href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.iamdog',
       icon: iamdogImg,
       role: 'Creator & CEO ronimstudio',
@@ -151,7 +151,7 @@ export const Home: React.FC = () => {
     {
       title: 'Hungry Piggy',
       category: 'Mobile' as Category,
-      description: 'Arcade game – flick coins into the world\'s hungriest piggy bank using your finger as the catapult.',
+      description: 'Arcade game - flick coins into the world\'s hungriest piggy bank using your finger as the catapult.',
       href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.hitacoin',
       icon: hungrypiggyImg,
       role: 'Creator & CEO ronimstudio',
@@ -188,7 +188,7 @@ export const Home: React.FC = () => {
                   Oskar Minor
                 </h1>
                 <p className="text-base md:text-lg text-[#666] leading-relaxed max-w-md mb-8">
-                  17y developer from Poland. I build apps people actually use — across mobile, web and desktop.
+                  17y developer from Poland. <br /> If you need something, just do it yourself instead of looking for it.
                 </p>
                 <div className="flex items-center gap-5">
                   <SocialLink href="https://github.com/oskie5802" icon={<Github size={17} />} label="GitHub" />
@@ -250,7 +250,7 @@ export const Home: React.FC = () => {
                   </div>
 
                   <p className="text-[#606060] text-sm leading-relaxed group-hover:text-[#888] transition-colors duration-200">
-                    Omni finds your lost files, installs apps, manages your email and calendar, and almost anything else – just by asking.
+                    Omni finds your lost files, installs apps, manages your email and calendar, and almost anything else - just by asking.
                   </p>
                 </a>
 
@@ -289,7 +289,7 @@ export const Home: React.FC = () => {
                   </div>
 
                   <p className="text-[#7a6a5e] text-sm leading-relaxed group-hover:text-[#5a4a3e] transition-colors duration-200">
-                    Share books with people around you. Find what's worth reading – from your neighbours, not algorithms.
+                    Share books with people around you. Find what's worth reading - from your neighbours, not algorithms.
                   </p>
                 </a>
 
