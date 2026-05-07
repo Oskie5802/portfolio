@@ -222,7 +222,7 @@ const content = {
       note: 'Łączę szkołę z samodzielnym tworzeniem produktów, publicznymi projektami i nauką przez wdrażanie.',
     },
     languagesTitle: 'Języki',
-    languages: ['Polski - ojczysty', 'Angielski - B1'],
+    languages: ['Polski - ojczysty', 'Angielski - B1+'],
     lookingForTitle: 'Czego szukam',
     lookingFor: 'Wakacyjnego stażu blisko realnego tworzenia produktów: frontend, Next.js/React, aplikacje oparte o Supabase, produkty mobilne, funkcje AI albo narzędzia wewnętrzne. Chcę szczerego feedbacku, prawdziwych zadań i możliwości zobaczenia, jak mocne zespoły profesjonalnie budują software.',
   },
