@@ -32,7 +32,7 @@ const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="p-3 rounded-full bg-white/5 hover:bg-[#00f5ff20] hover:text-[#00f5ff] transition-all duration-300 text-[#666]"
+    className="text-[#505050] hover:text-[#c0c0c0] transition-colors duration-200"
     aria-label={label}
   >
     {icon}
@@ -44,21 +44,20 @@ const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3
+      staggerChildren: 0.07,
+      delayChildren: 0.05
     }
   }
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
     transition: {
-      duration: 1.2,
-      ease:[0.22, 1, 0.36, 1]
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1]
     }
   }
 };
@@ -79,25 +78,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, titleNode, description
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative h-full flex items-center gap-6 p-6 rounded-3xl bg-[#111] border border-white/5 hover:border-white/10 hover:bg-[#161616] transition-all duration-300 overflow-hidden"
+      className="group relative h-full flex items-center gap-4 p-4 rounded-xl bg-[#111] border border-white/[0.06] hover:border-white/[0.1] hover:bg-[#141414] transition-all duration-200 overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-[#00f5ff05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-      <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0 bg-[#000] rounded-2xl p-3 border border-white/5 shadow-2xl group-hover:scale-105 transition-transform duration-500 flex items-center justify-center relative z-10">
+      <div className="w-12 h-12 md:w-14 md:h-14 flex-shrink-0 bg-[#0c0c0c] rounded-xl flex items-center justify-center border border-white/[0.06] group-hover:border-white/[0.09] transition-all duration-200">
         {icon ? (
           <img
             src={icon}
             alt={title || ''}
-            className="w-full h-full object-contain"
+            className="w-8 h-8 md:w-9 md:h-9 object-contain"
           />
         ) : iconNode}
       </div>
-      <div className="relative z-10">
-        <h4 className="text-xl font-bold text-white mb-1 flex items-center gap-2">
+      <div className="flex-1 min-w-0">
+        <h4 className="text-[14px] font-semibold text-[#e0e0e0] mb-0.5 flex items-center gap-1.5">
           {titleNode ?? title}
-          <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+          <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-40 transition-opacity shrink-0" />
         </h4>
-        <p className="text-[#666] text-sm leading-snug group-hover:text-[#aaa] transition-colors">{description}</p>
+        <p className="text-[#585858] text-[13px] leading-snug group-hover:text-[#777] transition-colors">{description}</p>
         {role && <span className="sr-only">{role}</span>}
       </div>
     </a>
@@ -114,7 +111,7 @@ export const Home: React.FC = () => {
     {
       title: 'SafeLabs',
       category: 'Social' as Category,
-      description: 'Social safety project built with friends and presented at public events.',
+      description: 'Interactive cybersecurity workshops for primary school students, built with friends and presented live at public events.',
       href: 'https://safelabs.pl',
       icon: safelabsImg,
       role: 'Co-creator & Public presenter',
@@ -122,7 +119,7 @@ export const Home: React.FC = () => {
     {
       title: 'streść.to',
       category: 'Web' as Category,
-      description: 'Mobile & Web summarizing platform.',
+      description: 'Understand any Polish school reading in minutes – character profiles, plot breakdowns and key themes in one place.',
       href: 'https://strescto.pl',
       icon: stresctoImg,
       role: 'Founder',
@@ -130,7 +127,7 @@ export const Home: React.FC = () => {
     {
       title: 'Keepy',
       category: 'Mobile' as Category,
-      description: 'Receipt & Warranty manager.',
+      description: 'Scan and digitize paper receipts, track warranties and never miss a return deadline again.',
       href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.keepy&hl=pl',
       icon: keepyImg,
       role: 'Creator & CEO ronimstudio',
@@ -138,7 +135,7 @@ export const Home: React.FC = () => {
     {
       title: 'Motur',
       category: 'Mobile' as Category,
-      description: 'Social platform for motorcycle enthusiasts.',
+      description: 'Track your rides, discover new routes with AI, share your adventures and compete with riders. Strava for motorcyclists.',
       href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.motar',
       icon: moturImg,
       role: 'Creator & CEO ronimstudio',
@@ -146,7 +143,7 @@ export const Home: React.FC = () => {
     {
       title: 'I Am Dog',
       category: 'Mobile' as Category,
-      description: 'Interactive mobile game experience.',
+      description: 'Dog simulator for kids – explore the world as a dog, complete missions and unlock new levels.',
       href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.iamdog',
       icon: iamdogImg,
       role: 'Creator & CEO ronimstudio',
@@ -154,7 +151,7 @@ export const Home: React.FC = () => {
     {
       title: 'Hungry Piggy',
       category: 'Mobile' as Category,
-      description: 'Casual mobile gaming for high-stakes fun.',
+      description: 'Arcade game – flick coins into the world\'s hungriest piggy bank using your finger as the catapult.',
       href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.hitacoin',
       icon: hungrypiggyImg,
       role: 'Creator & CEO ronimstudio',
@@ -162,9 +159,9 @@ export const Home: React.FC = () => {
     {
       title: 'Audio Lab',
       category: 'Desktop' as Category,
-      description: 'Needed an app to play music at an event, so I built one.',
+      description: 'My audio player lacked a feature I needed, so I built my own.',
       href: 'https://github.com/Oskie5802/audiolab',
-      iconNode: <Music className="w-8 h-8 md:w-10 md:h-10 text-[#888] group-hover:text-[#00f5ff] transition-colors duration-300" />,
+      iconNode: <Music className="w-7 h-7 text-[#444] group-hover:text-[#777] transition-colors duration-200" />,
       role: 'Creator',
     },
   ];
@@ -174,7 +171,7 @@ export const Home: React.FC = () => {
     : allProjects.filter(p => p.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#e0e0e0] selection:bg-[#00f5ff] selection:text-[#050505]">
+    <div className="min-h-screen bg-[#0c0c0c] text-[#e0e0e0] selection:bg-white selection:text-[#0c0c0c]">
       <Background />
 
       <main className="max-w-4xl mx-auto px-6 pt-24 pb-32 relative z-10">
@@ -185,34 +182,31 @@ export const Home: React.FC = () => {
         >
           {/* Header / Intro */}
           <section className="mb-24">
-            <motion.div variants={itemVariants} className="flex flex-col md:flex-row gap-8 md:items-start justify-between">
+            <motion.div variants={itemVariants} className="flex flex-col md:flex-row gap-10 md:items-start justify-between">
               <div className="flex-1">
-                <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-6 text-white leading-none">
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-5 text-white leading-none">
                   Oskar Minor
                 </h1>
-                <div className="flex flex-col md:flex-row md:items-end gap-6">
-                  <p className="text-xl md:text-2xl text-[#888] leading-relaxed max-w-xl">
-                    I'm 16-year-old developer based in Poland.
-                    If you need something, just do it yourself instead of looking for it.
-                  </p>
+                <p className="text-base md:text-lg text-[#666] leading-relaxed max-w-md mb-8">
+                  17y developer from Poland. I build apps people actually use — across mobile, web and desktop.
+                </p>
+                <div className="flex items-center gap-5">
+                  <SocialLink href="https://github.com/oskie5802" icon={<Github size={17} />} label="GitHub" />
+                  <SocialLink href="https://www.linkedin.com/in/oskar-minor-704245343/" icon={<Linkedin size={17} />} label="LinkedIn" />
+                  <SocialLink href="https://x.com/oskarminor" icon={<XIcon className="w-[17px] h-[17px]" />} label="X" />
+                  <SocialLink href="https://play.google.com/store/apps/dev?id=7728087098258584312" icon={<GooglePlayIcon className="w-[17px] h-[17px]" />} label="Google Play" />
+                  <a href="mailto:minoroskar2009@gmail.com" className="text-[#505050] hover:text-[#c0c0c0] transition-colors duration-200" aria-label="Email">
+                    <Mail size={17} />
+                  </a>
                 </div>
               </div>
 
-              <div className="flex flex-col items-center md:items-end gap-6 order-first md:order-last mb-6 md:mb-0">
-                <div className="relative w-32 h-32 md:w-48 md:h-48 flex-shrink-0">
-                   <div className="absolute inset-0 bg-[#00f5ff20] rounded-full blur-xl animate-pulse" />
-                   <img
-                     src={meImg}
-                     alt="Oskar Minor"
-                     className="relative w-full h-full object-cover rounded-full border-2 border-white/10 shadow-2xl"
-                   />
-                </div>
-                <div className="flex gap-4">
-                  <SocialLink href="https://github.com/oskie5802" icon={<Github size={20} />} label="GitHub" />
-                  <SocialLink href="https://www.linkedin.com/in/oskar-minor-704245343/" icon={<Linkedin size={20} />} label="LinkedIn" />
-                  <SocialLink href="https://x.com/oskarminor" icon={<XIcon className="w-5 h-5" />} label="X" />
-                  <SocialLink href="https://play.google.com/store/apps/dev?id=7728087098258584312" icon={<GooglePlayIcon className="w-5 h-5" />} label="CEO ronimstudio" />
-                </div>
+              <div className="flex-shrink-0 order-first md:order-last">
+                <img
+                  src={meImg}
+                  alt="Oskar Minor"
+                  className="w-28 h-28 md:w-44 md:h-44 object-cover rounded-2xl border border-white/[0.08]"
+                />
               </div>
             </motion.div>
           </section>
@@ -220,44 +214,42 @@ export const Home: React.FC = () => {
           {/* Featured Projects */}
           <section className="mb-16">
             <motion.div variants={itemVariants}>
-              <h2 className="text-xs uppercase tracking-[0.3em] text-[#00f5ff] font-bold mb-8">Featured projects</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <h2 className="text-[11px] uppercase tracking-[0.25em] text-[#444] font-semibold mb-6">Featured</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                 {/* Omni */}
                 <a
                   href="https://heyomni.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative p-7 rounded-3xl bg-gradient-to-br from-[#111] to-[#080808] border border-white/5 hover:border-[#00f5ff50] transition-all duration-500 overflow-hidden flex flex-col gap-6"
+                  className="group relative p-6 rounded-2xl bg-[#111] border border-white/[0.06] hover:border-white/[0.1] transition-all duration-200 overflow-hidden flex flex-col gap-5"
                 >
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,245,255,0.05),transparent_40%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute top-0 right-0 p-5">
-                    <ArrowUpRight className="text-[#333] group-hover:text-[#00f5ff] transition-colors duration-300" size={22} />
+                    <ArrowUpRight className="text-[#2a2a2a] group-hover:text-[#666] transition-colors duration-200" size={18} />
                   </div>
 
-                  <div className="flex items-center gap-5 relative z-10">
-                    <div className="w-20 h-20 relative flex-shrink-0">
-                      <div className="absolute inset-0 bg-[#00f5ff20] blur-xl rounded-full animate-pulse group-hover:bg-[#00f5ff40] transition-all duration-500" />
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 flex-shrink-0 rounded-2xl overflow-hidden">
                       <img
                         src={omniosImg}
-                        alt="Omni Icon"
-                        className="relative w-full h-full object-contain drop-shadow-[0_0_12px_rgba(0,245,255,0.3)] group-hover:scale-110 transition-transform duration-500 ease-out"
+                        alt="Omni"
+                        className="w-full h-full object-contain"
                       />
                     </div>
                     <div>
-                      <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <div className="inline-block px-2.5 py-0.5 rounded-full border border-[#00f5ff30] bg-[#00f5ff05] text-[#00f5ff] text-[9px] uppercase tracking-widest font-bold">
-                          Coming Early 2026
-                        </div>
-                        <div className="inline-block px-2.5 py-0.5 rounded-full border border-white/10 bg-white/5 text-white/60 text-[9px] uppercase tracking-widest font-bold">
+                      <div className="flex flex-wrap items-center gap-1.5 mb-1.5">
+                        <span className="px-2 py-0.5 rounded-md bg-white/[0.05] text-[#555] text-[10px] uppercase tracking-widest font-medium">
+                          Early 2026
+                        </span>
+                        <span className="px-2 py-0.5 rounded-md bg-white/[0.05] text-[#444] text-[10px] uppercase tracking-widest font-medium">
                           Co-founder
-                        </div>
+                        </span>
                       </div>
-                      <h3 className="text-3xl font-bold text-white">Omni</h3>
+                      <h3 className="text-2xl font-bold text-white">Omni</h3>
                     </div>
                   </div>
 
-                  <p className="text-[#888] text-sm leading-relaxed group-hover:text-[#ccc] transition-colors duration-300 relative z-10">
+                  <p className="text-[#606060] text-sm leading-relaxed group-hover:text-[#888] transition-colors duration-200">
                     Omni finds your lost files, installs apps, manages your email and calendar, and almost anything else – just by asking.
                   </p>
                 </a>
@@ -267,38 +259,36 @@ export const Home: React.FC = () => {
                   href="https://czytajdalej.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative p-7 rounded-3xl bg-[#f7f3ef] border border-[#e8e0d8] hover:border-[#c96447] transition-all duration-500 overflow-hidden flex flex-col gap-6"
+                  className="group relative p-6 rounded-2xl bg-[#f7f3ef] border border-[#e8e0d8] hover:border-[#d4c8be] transition-all duration-200 overflow-hidden flex flex-col gap-5"
                 >
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(201,100,71,0.08),transparent_50%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute top-0 right-0 p-5">
-                    <ArrowUpRight className="text-[#ccc0b8] group-hover:text-[#c96447] transition-colors duration-300" size={22} />
+                    <ArrowUpRight className="text-[#ccc0b8] group-hover:text-[#c96447] transition-colors duration-200" size={18} />
                   </div>
 
-                  <div className="flex items-center gap-5 relative z-10">
-                    <div className="w-20 h-20 relative flex-shrink-0">
-                      <div className="absolute inset-0 bg-[#c9644730] blur-xl rounded-full animate-pulse group-hover:bg-[#c9644750] transition-all duration-500" />
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 flex-shrink-0 rounded-2xl overflow-hidden">
                       <img
                         src={czytajdalejImg}
-                        alt="czytaj dalej Icon"
-                        className="relative w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 ease-out"
+                        alt="czytaj dalej"
+                        className="w-full h-full object-contain"
                       />
                     </div>
                     <div>
-                      <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <div className="inline-block px-2.5 py-0.5 rounded-full border border-[#c9644740] bg-[#c9644710] text-[#c96447] text-[9px] uppercase tracking-widest font-bold">
+                      <div className="flex flex-wrap items-center gap-1.5 mb-1.5">
+                        <span className="px-2 py-0.5 rounded-md bg-black/[0.05] text-[#c96447] text-[10px] uppercase tracking-widest font-medium">
                           Building
-                        </div>
-                        <div className="inline-block px-2.5 py-0.5 rounded-full border border-black/10 bg-black/5 text-black/50 text-[9px] uppercase tracking-widest font-bold">
+                        </span>
+                        <span className="px-2 py-0.5 rounded-md bg-black/[0.05] text-black/40 text-[10px] uppercase tracking-widest font-medium">
                           Founder
-                        </div>
+                        </span>
                       </div>
-                      <h3 className="text-3xl font-bold tracking-tight">
+                      <h3 className="text-2xl font-bold tracking-tight">
                         <span style={{ color: '#1a1008' }}>czytaj</span><span style={{ color: '#c96447' }}>dalej</span>
                       </h3>
                     </div>
                   </div>
 
-                  <p className="text-[#7a6a5e] text-sm leading-relaxed group-hover:text-[#4a3a2e] transition-colors duration-300 relative z-10">
+                  <p className="text-[#7a6a5e] text-sm leading-relaxed group-hover:text-[#5a4a3e] transition-colors duration-200">
                     Share books with people around you. Find what's worth reading – from your neighbours, not algorithms.
                   </p>
                 </a>
@@ -309,17 +299,17 @@ export const Home: React.FC = () => {
 
           {/* Other Projects */}
           <section>
-            <motion.div variants={itemVariants} className="flex flex-col gap-6 mb-8">
-              <h2 className="text-xs uppercase tracking-[0.3em] text-[#555] font-bold">Projects</h2>
-              <div className="flex flex-wrap gap-2">
+            <motion.div variants={itemVariants} className="flex flex-col gap-4 mb-5">
+              <h2 className="text-[11px] uppercase tracking-[0.25em] text-[#444] font-semibold">Projects</h2>
+              <div className="flex flex-wrap gap-1">
                 {CATEGORIES.map(cat => (
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold transition-all duration-200 border ${
+                    className={`px-3 py-1.5 rounded-lg text-[11px] uppercase tracking-[0.15em] font-medium transition-all duration-150 ${
                       activeCategory === cat
-                        ? 'bg-white/8 text-white border-white/15'
-                        : 'text-[#444] border-transparent hover:text-[#777] hover:border-white/5'
+                        ? 'bg-white/[0.08] text-[#ccc]'
+                        : 'text-[#444] hover:text-[#777]'
                     }`}
                   >
                     {cat}
@@ -334,8 +324,8 @@ export const Home: React.FC = () => {
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                exit={{ opacity: 0, transition: { duration: 0.12 } }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                exit={{ opacity: 0, transition: { duration: 0.1 } }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-3"
               >
                 {filteredProjects.map(project => (
                   <ProjectCard key={project.title} {...project} />
@@ -345,24 +335,20 @@ export const Home: React.FC = () => {
           </section>
 
           {/* Footer */}
-          <footer className="mt-32 pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-            <motion.div variants={itemVariants} className="text-[#444] text-sm tracking-widest uppercase">
+          <footer className="mt-28 pt-10 border-t border-white/[0.06] flex flex-col md:flex-row justify-between items-center gap-5">
+            <motion.div variants={itemVariants} className="text-[#333] text-[11px] tracking-widest uppercase">
               &copy; 2026 Oskar Minor
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex gap-6 md:gap-8 flex-col md:flex-row items-center">
-              <a
-                href="mailto:minoroskar2009@gmail.com"
-                className="group flex items-center gap-3 text-[#888] hover:text-white transition-colors"
-              >
-                <Mail size={18} className="group-hover:text-[#00f5ff] transition-colors" />
-                <span className="font-medium text-sm md:text-base">minoroskar2009@gmail.com</span>
+            <motion.div variants={itemVariants} className="flex gap-5 items-center flex-wrap justify-center">
+              <a href="mailto:minoroskar2009@gmail.com" className="text-[#505050] hover:text-[#aaa] transition-colors text-[13px]">
+                minoroskar2009@gmail.com
               </a>
-
-              <div className="flex gap-6 text-[#444]">
-                <a href="https://x.com/oskarminor" target="_blank" className="hover:text-white transition-colors">X</a>
-                <a href="https://github.com/oskie5802" target="_blank" className="hover:text-white transition-colors">GitHub</a>
-                <a href="https://www.linkedin.com/in/oskar-minor-704245343/" target="_blank" className="hover:text-white transition-colors">LinkedIn</a>
+              <span className="text-[#2a2a2a] hidden md:block">·</span>
+              <div className="flex gap-4">
+                <a href="https://x.com/oskarminor" target="_blank" className="text-[#404040] hover:text-[#aaa] transition-colors text-[13px]">X</a>
+                <a href="https://github.com/oskie5802" target="_blank" className="text-[#404040] hover:text-[#aaa] transition-colors text-[13px]">GitHub</a>
+                <a href="https://www.linkedin.com/in/oskar-minor-704245343/" target="_blank" className="text-[#404040] hover:text-[#aaa] transition-colors text-[13px]">LinkedIn</a>
               </div>
             </motion.div>
           </footer>
