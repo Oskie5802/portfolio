@@ -109,6 +109,14 @@ export const Home: React.FC = () => {
 
   const allProjects = [
     {
+      title: 'Omni',
+      category: 'Desktop' as Category,
+      description: 'Finds your lost files, installs apps, manages your email and calendar, and almost anything else - just by asking.',
+      href: 'https://heyomni.app',
+      icon: omniosImg,
+      role: 'Co-founder',
+    },
+    {
       title: 'SafeLabs',
       category: 'Social' as Category,
       description: 'Interactive cybersecurity workshops for primary school students, built with friends and presented live at public events.',
@@ -215,85 +223,48 @@ export const Home: React.FC = () => {
           <section className="mb-16">
             <motion.div variants={itemVariants}>
               <h2 className="text-[11px] uppercase tracking-[0.25em] text-[#444] font-semibold mb-6">Featured</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                {/* Omni */}
-                <a
-                  href="https://heyomni.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative p-6 rounded-2xl bg-[#111] border border-white/[0.06] hover:border-white/[0.1] transition-all duration-200 overflow-hidden flex flex-col gap-5"
-                >
-                  <div className="absolute top-0 right-0 p-5">
-                    <ArrowUpRight className="text-[#2a2a2a] group-hover:text-[#666] transition-colors duration-200" size={18} />
+              {/* czytaj dalej */}
+              <a
+                href="https://czytajdalej.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative p-8 md:p-10 rounded-2xl bg-[#f7f3ef] border border-[#e8e0d8] hover:border-[#d4c8be] transition-all duration-300 overflow-hidden flex flex-col md:flex-row md:items-center gap-7 md:gap-10"
+              >
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-[#c96447]/[0.07] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                />
+
+                <div className="absolute top-0 right-0 p-6">
+                  <ArrowUpRight className="text-[#ccc0b8] group-hover:text-[#c96447] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" size={20} />
+                </div>
+
+                <div className="w-24 h-24 md:w-28 md:h-28 flex-shrink-0 rounded-3xl overflow-hidden bg-white/40 border border-[#e8e0d8] shadow-sm group-hover:scale-[1.03] transition-transform duration-300">
+                  <img
+                    src={czytajdalejImg}
+                    alt="czytaj dalej"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+
+                <div className="flex-1 min-w-0 relative">
+                  <div className="flex flex-wrap items-center gap-1.5 mb-3">
+                    <span className="px-2 py-0.5 rounded-md bg-black/[0.05] text-[#c96447] text-[10px] uppercase tracking-widest font-medium">
+                      Building
+                    </span>
+                    <span className="px-2 py-0.5 rounded-md bg-black/[0.05] text-black/40 text-[10px] uppercase tracking-widest font-medium">
+                      Founder
+                    </span>
                   </div>
-
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 flex-shrink-0 rounded-2xl overflow-hidden">
-                      <img
-                        src={omniosImg}
-                        alt="Omni"
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <div>
-                      <div className="flex flex-wrap items-center gap-1.5 mb-1.5">
-                        <span className="px-2 py-0.5 rounded-md bg-white/[0.05] text-[#555] text-[10px] uppercase tracking-widest font-medium">
-                          Early 2026
-                        </span>
-                        <span className="px-2 py-0.5 rounded-md bg-white/[0.05] text-[#444] text-[10px] uppercase tracking-widest font-medium">
-                          Co-founder
-                        </span>
-                      </div>
-                      <h3 className="text-2xl font-bold text-white">Omni</h3>
-                    </div>
-                  </div>
-
-                  <p className="text-[#606060] text-sm leading-relaxed group-hover:text-[#888] transition-colors duration-200">
-                    Omni finds your lost files, installs apps, manages your email and calendar, and almost anything else - just by asking.
-                  </p>
-                </a>
-
-                {/* czytaj dalej */}
-                <a
-                  href="https://czytajdalej.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative p-6 rounded-2xl bg-[#f7f3ef] border border-[#e8e0d8] hover:border-[#d4c8be] transition-all duration-200 overflow-hidden flex flex-col gap-5"
-                >
-                  <div className="absolute top-0 right-0 p-5">
-                    <ArrowUpRight className="text-[#ccc0b8] group-hover:text-[#c96447] transition-colors duration-200" size={18} />
-                  </div>
-
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 flex-shrink-0 rounded-2xl overflow-hidden">
-                      <img
-                        src={czytajdalejImg}
-                        alt="czytaj dalej"
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <div>
-                      <div className="flex flex-wrap items-center gap-1.5 mb-1.5">
-                        <span className="px-2 py-0.5 rounded-md bg-black/[0.05] text-[#c96447] text-[10px] uppercase tracking-widest font-medium">
-                          Building
-                        </span>
-                        <span className="px-2 py-0.5 rounded-md bg-black/[0.05] text-black/40 text-[10px] uppercase tracking-widest font-medium">
-                          Founder
-                        </span>
-                      </div>
-                      <h3 className="text-2xl font-bold tracking-tight">
-                        <span style={{ color: '#1a1008' }}>czytaj</span><span style={{ color: '#c96447' }}>dalej</span>
-                      </h3>
-                    </div>
-                  </div>
-
-                  <p className="text-[#7a6a5e] text-sm leading-relaxed group-hover:text-[#5a4a3e] transition-colors duration-200">
+                  <h3 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
+                    <span style={{ color: '#1a1008' }}>czytaj</span><span style={{ color: '#c96447' }}>dalej</span>
+                  </h3>
+                  <p className="text-[#7a6a5e] text-[15px] leading-relaxed max-w-xl group-hover:text-[#5a4a3e] transition-colors duration-200">
                     Share books with people around you. Find what's worth reading - from your neighbours, not algorithms.
                   </p>
-                </a>
-
-              </div>
+                </div>
+              </a>
             </motion.div>
           </section>
 
