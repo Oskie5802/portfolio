@@ -39,7 +39,7 @@ const content = {
     highlightsTitle: 'Highlights',
     highlights: [
       'Built and shipped mobile, web and desktop apps as a teenager.',
-      'Over 60,000 downloads for my game I Am Dog on Google Play.',
+      'Over 70,000 downloads for my game I Am Dog on Google Play.',
       '600 people joined the czytajdalej waitlist in two weeks.',
       'Co-founded Omni, an AI assistant (project now closed).',
       'Finalist in Zwolnieni z Teorii with SafeLabs.',
@@ -80,10 +80,10 @@ const content = {
         name: 'I Am Dog',
         role: 'Creator',
         href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.iamdog',
-        status: '60,000+ downloads',
+        status: '70,000+ downloads',
         description: 'A dog simulator game for kids on Google Play, with missions and levels to unlock.',
         bullets: [
-          'Passed 60,000 downloads on Google Play.',
+          'Passed 70,000 downloads on Google Play.',
           'Learned how to ship and keep improving a real product.',
         ],
       },
@@ -173,7 +173,7 @@ const content = {
     highlightsTitle: 'Najważniejsze',
     highlights: [
       'Tworzę i wydaję aplikacje mobilne, webowe i desktopowe jako nastolatek.',
-      'Ponad 60 000 pobrań mojej gry I Am Dog w Google Play.',
+      'Ponad 70 000 pobrań mojej gry I Am Dog w Google Play.',
       '600 osób zapisało się na waitlistę czytajdalej w dwa tygodnie.',
       'Współzałożyciel Omni, asystenta AI (projekt zamknięty).',
       'Finalista Zwolnionych z Teorii z projektem SafeLabs.',
@@ -214,10 +214,10 @@ const content = {
         name: 'I Am Dog',
         role: 'Creator',
         href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.iamdog',
-        status: '60 000+ pobrań',
+        status: '70 000+ pobrań',
         description: 'Gra-symulator psa dla dzieci w Google Play, z misjami i poziomami do odblokowania.',
         bullets: [
-          'Ponad 60 000 pobrań w Google Play.',
+          'Ponad 70 000 pobrań w Google Play.',
           'Nauczyłem się wydawać i wciąż ulepszać realny produkt.',
         ],
       },
@@ -349,15 +349,16 @@ export const Cv: React.FC = () => {
           .cv-print-contact-list { display: grid !important; gap: 1.8mm !important; min-width: 54mm !important; font-size: 8.2pt !important; }
           .cv-print-contact-card { border: 1px solid #e2e2e2 !important; border-radius: 7px !important; padding: 2mm 2.6mm !important; background: #fafafa !important; }
 
-          /* Keep the real two-column grid, just like on screen */
-          .cv-grid { display: grid !important; grid-template-columns: 1fr 60mm !important; gap: 7mm !important; align-items: start !important; }
+          /* Single-column flow so the CV paginates reliably (grid clips content across pages) */
+          .cv-grid { display: block !important; }
           .cv-grid > div, .cv-grid > aside { display: block !important; margin: 0 !important; }
           .cv-grid > div > .cv-print-section + .cv-print-section,
-          .cv-grid > aside > .cv-print-section + .cv-print-section { margin-top: 4.5mm !important; }
+          .cv-grid > aside > .cv-print-section + .cv-print-section,
+          .cv-grid > aside { margin-top: 4.5mm !important; }
 
           .cv-print-section { overflow: visible !important; border: 0 !important; border-top: 1px solid #dcdcdc !important; border-radius: 0 !important; padding: 3mm 0 0 0 !important; }
           .cv-print-section h2 { margin-bottom: 2.2mm !important; color: #555 !important; font-size: 7pt !important; letter-spacing: 0.16em !important; }
-          /* Small sidebar sections should not split across pages */
+          /* Short sections stay together on one page */
           .cv-grid > aside > .cv-print-section { break-inside: avoid !important; page-break-inside: avoid !important; }
 
           .cv-print-project { break-inside: avoid !important; page-break-inside: avoid !important; border: 0 !important; border-left: 2px solid #dedede !important; border-radius: 0 !important; padding: 0 0 0 3mm !important; }
