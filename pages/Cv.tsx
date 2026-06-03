@@ -43,6 +43,7 @@ const content = {
       '600 people joined the czytajdalej waitlist in two weeks.',
       'Co-founded Omni, an AI assistant (project now closed).',
       'Finalist in Zwolnieni z Teorii with SafeLabs.',
+      'Finalist in the Motorola Solutions Science Cup with our game Crossguard.',
     ],
     skillsTitle: 'Skills',
     skillGroups: [
@@ -96,6 +97,17 @@ const content = {
         bullets: [
           'Finalist in Zwolnieni z Teorii.',
           'Explained security topics in a simple, practical way.',
+        ],
+      },
+      {
+        name: 'Crossguard',
+        role: 'Co-creator',
+        href: 'https://crossguard.pl',
+        status: 'Motorola Solutions Science Cup finalist',
+        description: 'A game we built as a team, selected as a finalist in the Motorola Solutions Science Cup.',
+        bullets: [
+          'Finalist in the Motorola Solutions Science Cup.',
+          'Built the game together with a team.',
         ],
       },
       {
@@ -177,6 +189,7 @@ const content = {
       '600 osób zapisało się na waitlistę czytajdalej w dwa tygodnie.',
       'Współzałożyciel Omni, asystenta AI (projekt zamknięty).',
       'Finalista Zwolnionych z Teorii z projektem SafeLabs.',
+      'Finalista Motorola Solutions Science Cup z naszą grą Crossguard.',
     ],
     skillsTitle: 'Umiejętności',
     skillGroups: [
@@ -230,6 +243,17 @@ const content = {
         bullets: [
           'Finalista Zwolnionych z Teorii.',
           'Tłumaczę cyberbezpieczeństwo w prosty, praktyczny sposób.',
+        ],
+      },
+      {
+        name: 'Crossguard',
+        role: 'Co-creator',
+        href: 'https://crossguard.pl',
+        status: 'Finalista Motorola Solutions Science Cup',
+        description: 'Gra, którą stworzyliśmy zespołowo, wybrana jako finalista Motorola Solutions Science Cup.',
+        bullets: [
+          'Finalista Motorola Solutions Science Cup.',
+          'Grę zbudowaliśmy wspólnie w zespole.',
         ],
       },
       {
