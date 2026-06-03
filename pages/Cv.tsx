@@ -41,7 +41,7 @@ const content = {
       'Built and shipped mobile, web and desktop apps as a teenager.',
       'Over 60,000 downloads for my game I Am Dog on Google Play.',
       '600 people joined the czytajdalej waitlist in two weeks.',
-      'Co-founded Omni, an AI assistant that I helped launch.',
+      'Co-founded Omni, an AI assistant (project now closed).',
       'Finalist in Zwolnieni z Teorii with SafeLabs.',
     ],
     skillsTitle: 'Skills',
@@ -58,22 +58,22 @@ const content = {
         name: 'czytajdalej',
         role: 'Founder',
         href: 'https://czytajdalej.app',
-        status: 'In development',
+        status: 'Launched',
         description: 'A local app for sharing books. You find good books from your neighbours, not from algorithms.',
         bullets: [
-          '600 people joined the waitlist in the first two weeks.',
-          'I design the product, the user flow and the launch myself.',
+          '600 people joined the waitlist before launch.',
+          'I designed the product, the user flow and the launch myself.',
         ],
       },
       {
         name: 'Omni',
         role: 'Co-founder',
         href: 'https://heyomni.app',
-        status: 'Launched',
+        status: 'Discontinued',
         description: 'An AI assistant that helps you find files, install apps and handle email and calendar - just by asking.',
         bullets: [
-          'Helped take it from an idea to a real, launched product.',
-          'Worked with a team and helped shape the product direction.',
+          'Built the product with a team and helped shape its direction.',
+          'We later decided to close the project, but I learned a lot from it.',
         ],
       },
       {
@@ -157,8 +157,6 @@ const content = {
     },
     languagesTitle: 'Languages',
     languages: ['Polish - native', 'English - B1'],
-    lookingForTitle: 'What I want to do',
-    lookingFor: 'I want to work close to real product development: frontend, React/Next.js, Supabase apps, mobile products or AI features. I want real tasks, honest feedback and to learn how strong teams build software.',
   },
   pl: {
     back: 'Wróć do portfolio',
@@ -177,7 +175,7 @@ const content = {
       'Tworzę i wydaję aplikacje mobilne, webowe i desktopowe jako nastolatek.',
       'Ponad 60 000 pobrań mojej gry I Am Dog w Google Play.',
       '600 osób zapisało się na waitlistę czytajdalej w dwa tygodnie.',
-      'Współzałożyciel Omni, asystenta AI, który pomogłem wydać.',
+      'Współzałożyciel Omni, asystenta AI (projekt zamknięty).',
       'Finalista Zwolnionych z Teorii z projektem SafeLabs.',
     ],
     skillsTitle: 'Umiejętności',
@@ -194,22 +192,22 @@ const content = {
         name: 'czytajdalej',
         role: 'Founder',
         href: 'https://czytajdalej.app',
-        status: 'W trakcie budowy',
+        status: 'Wydane',
         description: 'Lokalna aplikacja do dzielenia się książkami. Dobre tytuły znajdujesz u sąsiadów, a nie w algorytmach.',
         bullets: [
-          '600 zapisów na waitlistę w pierwsze dwa tygodnie.',
-          'Sam projektuję produkt, flow użytkownika i strategię startu.',
+          '600 zapisów na waitlistę jeszcze przed startem.',
+          'Sam zaprojektowałem produkt, flow użytkownika i start.',
         ],
       },
       {
         name: 'Omni',
         role: 'Co-founder',
         href: 'https://heyomni.app',
-        status: 'Wydane',
+        status: 'Porzucone',
         description: 'Asystent AI, który pomaga znaleźć pliki, instalować aplikacje oraz ogarniać maile i kalendarz - wystarczy poprosić.',
         bullets: [
-          'Pomogłem doprowadzić go od pomysłu do realnego, wydanego produktu.',
-          'Pracowałem w zespole i współtworzyłem kierunek produktu.',
+          'Budowałem produkt w zespole i współtworzyłem jego kierunek.',
+          'Ostatecznie zamknęliśmy projekt, ale dużo się przy nim nauczyłem.',
         ],
       },
       {
@@ -293,8 +291,6 @@ const content = {
     },
     languagesTitle: 'Języki',
     languages: ['Polski - ojczysty', 'Angielski - B1'],
-    lookingForTitle: 'Czego szukam',
-    lookingFor: 'Chcę pracować blisko realnego tworzenia produktów: frontend, React/Next.js, aplikacje na Supabase, produkty mobilne albo funkcje AI. Zależy mi na prawdziwych zadaniach, szczerym feedbacku i nauce, jak mocne zespoły budują software.',
   },
 };
 
@@ -332,38 +328,46 @@ export const Cv: React.FC = () => {
     <div className="cv-print-root min-h-screen bg-[#0c0c0c] text-[#e0e0e0] selection:bg-white selection:text-[#0c0c0c] print:bg-white print:text-[#111]">
       <style>{`
         @media print {
-          @page { size: A4; margin: 11mm; }
+          @page { size: A4; margin: 12mm; }
           * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
           html, body, #root { width: 100% !important; background: #fff !important; }
-          body { color: #111 !important; font-size: 10.5pt !important; }
+          body { color: #111 !important; font-size: 9.5pt !important; }
           .cv-no-print { display: none !important; }
-          .cv-print-root, .cv-page, .cv-section-gap, .cv-grid, .cv-grid > div, .cv-grid > aside { background: #fff !important; }
-          .cv-page { max-width: none !important; min-height: auto !important; padding: 0 !important; }
+          .cv-print-root, .cv-page, .cv-section-gap, .cv-grid, .cv-grid > div, .cv-grid > aside,
+          .cv-print-section, .cv-print-project, .cv-print-header { background: #fff !important; box-shadow: none !important; }
+          .cv-page { max-width: none !important; min-height: auto !important; padding: 0 !important; margin: 0 !important; }
           .cv-section-gap { display: block !important; }
           .cv-section-gap > * + * { margin-top: 5mm !important; }
-          .cv-print-header { overflow: visible !important; border-bottom: 1px solid #d8d8d8 !important; border-radius: 0 !important; padding-bottom: 4mm !important; }
-          .cv-print-header > div { display: grid !important; grid-template-columns: minmax(0, 1fr) 64mm !important; gap: 8mm !important; align-items: end !important; }
-          .cv-print-contact-list { gap: 1.6mm !important; min-width: 0 !important; font-size: 8.4pt !important; }
-          .cv-print-contact-card { border: 1px solid #e2e2e2 !important; border-radius: 7px !important; padding: 2mm 2.6mm !important; background: #fafafa !important; }
-          .cv-grid { display: block !important; background: #fff !important; }
-          .cv-grid > div, .cv-grid > aside { display: block !important; background: #fff !important; }
-          .cv-grid > div > .cv-print-section + .cv-print-section, .cv-grid > aside > .cv-print-section + .cv-print-section { margin-top: 4.6mm !important; }
-          .cv-grid > aside { margin-top: 4.6mm !important; column-count: 2 !important; column-gap: 8mm !important; }
-          .cv-grid > aside .cv-print-section { display: inline-block !important; width: 100% !important; margin: 0 0 4.6mm !important; break-inside: avoid !important; page-break-inside: avoid !important; }
-          .cv-grid > div > .cv-print-section:first-child { column-count: 2 !important; column-gap: 8mm !important; }
-          .cv-grid > div > .cv-print-section:first-child h2 { column-span: all !important; }
-          .cv-print-section { overflow: visible !important; border: 0 !important; border-top: 1px solid #dcdcdc !important; border-radius: 0 !important; background: #fff !important; padding-top: 3mm !important; }
-          .cv-print-section h2 { margin-bottom: 2.2mm !important; color: #555 !important; font-size: 7pt !important; letter-spacing: 0.16em !important; }
-          .cv-print-project { break-inside: avoid !important; page-break-inside: avoid !important; border: 0 !important; border-left: 2px solid #dedede !important; border-radius: 0 !important; padding: 0 0 0 3mm !important; background: #fff !important; }
-          .cv-print-project + .cv-print-project { margin-top: 3mm !important; }
-          .cv-print-skills { gap: 1.5mm !important; }
-          .cv-print-pill { border: 1px solid #d9d9d9 !important; border-radius: 999px !important; background: #fafafa !important; padding: 1.4mm 2.2mm !important; font-size: 7.8pt !important; line-height: 1.2 !important; }
-          .cv-print-header h1 { font-size: 25pt !important; line-height: 1 !important; }
+
+          /* Header keeps its two-column row layout */
+          .cv-print-header { overflow: visible !important; border: 0 !important; border-bottom: 1px solid #d8d8d8 !important; border-radius: 0 !important; padding: 0 0 4mm 0 !important; }
+          .cv-print-header > div { display: flex !important; flex-direction: row !important; align-items: flex-end !important; justify-content: space-between !important; gap: 8mm !important; }
+          .cv-print-header h1 { font-size: 24pt !important; line-height: 1 !important; }
           .cv-print-header p { margin-top: 2.6mm !important; }
-          .cv-print-header p:first-of-type { font-size: 11.2pt !important; line-height: 1.24 !important; }
-          .cv-print-header p:last-of-type { font-size: 8.5pt !important; line-height: 1.45 !important; }
-          .cv-print-project h3, .cv-print-project a { font-size: 11.4pt !important; }
-          .cv-print-project p, .cv-print-project li, .cv-print-section p, .cv-print-section li { font-size: 8.3pt !important; line-height: 1.42 !important; }
+          .cv-print-header p:first-of-type { font-size: 11pt !important; line-height: 1.25 !important; }
+          .cv-print-header p:last-of-type { font-size: 8.6pt !important; line-height: 1.45 !important; }
+          .cv-print-contact-list { display: grid !important; gap: 1.8mm !important; min-width: 54mm !important; font-size: 8.2pt !important; }
+          .cv-print-contact-card { border: 1px solid #e2e2e2 !important; border-radius: 7px !important; padding: 2mm 2.6mm !important; background: #fafafa !important; }
+
+          /* Keep the real two-column grid, just like on screen */
+          .cv-grid { display: grid !important; grid-template-columns: 1fr 60mm !important; gap: 7mm !important; align-items: start !important; }
+          .cv-grid > div, .cv-grid > aside { display: block !important; margin: 0 !important; }
+          .cv-grid > div > .cv-print-section + .cv-print-section,
+          .cv-grid > aside > .cv-print-section + .cv-print-section { margin-top: 4.5mm !important; }
+
+          .cv-print-section { overflow: visible !important; border: 0 !important; border-top: 1px solid #dcdcdc !important; border-radius: 0 !important; padding: 3mm 0 0 0 !important; }
+          .cv-print-section h2 { margin-bottom: 2.2mm !important; color: #555 !important; font-size: 7pt !important; letter-spacing: 0.16em !important; }
+          /* Small sidebar sections should not split across pages */
+          .cv-grid > aside > .cv-print-section { break-inside: avoid !important; page-break-inside: avoid !important; }
+
+          .cv-print-project { break-inside: avoid !important; page-break-inside: avoid !important; border: 0 !important; border-left: 2px solid #dedede !important; border-radius: 0 !important; padding: 0 0 0 3mm !important; }
+          .cv-print-project + .cv-print-project { margin-top: 3mm !important; }
+          .cv-print-project h3, .cv-print-project a { font-size: 10.5pt !important; }
+          .cv-print-project p, .cv-print-project li, .cv-print-section p, .cv-print-section li { font-size: 8.2pt !important; line-height: 1.4 !important; }
+
+          .cv-print-skills { gap: 1.5mm !important; }
+          .cv-print-pill { border: 1px solid #d9d9d9 !important; border-radius: 999px !important; background: #fafafa !important; padding: 1.2mm 2mm !important; font-size: 7.6pt !important; line-height: 1.2 !important; }
+
           svg { width: 11px !important; height: 11px !important; }
           a { color: #111 !important; text-decoration: none !important; }
         }
@@ -504,10 +508,6 @@ export const Cv: React.FC = () => {
                 <div className="flex flex-wrap gap-2">
                   {t.languages.map(languageItem => <Pill key={languageItem}>{languageItem}</Pill>)}
                 </div>
-              </Section>
-
-              <Section title={t.lookingForTitle}>
-                <p className="text-[14px] leading-7 text-[#b4b4b4] print:text-[12px] print:leading-5 print:text-[#222]">{t.lookingFor}</p>
               </Section>
 
               <Section title={t.contact}>
