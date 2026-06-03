@@ -46,9 +46,9 @@ const content = {
     ],
     skillsTitle: 'Skills',
     skillGroups: [
-      { title: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Vite', 'responsive UI'] },
+      { title: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'responsive UI'] },
       { title: 'Backend & data', items: ['Supabase', 'databases', 'login & auth', 'API integrations'] },
-      { title: 'Mobile & games', items: ['mobile apps', 'Google Play releases', 'game mechanics'] },
+      { title: 'Mobile & games', items: ['Unity', 'Flutter', 'Flame', 'React Native (Expo)', 'Google Play releases'] },
       { title: 'AI products', items: ['AI workflows', 'prototyping', 'automation'] },
       { title: 'Product', items: ['founder thinking', 'waitlists', 'launching', 'public speaking'] },
     ],
@@ -180,9 +180,9 @@ const content = {
     ],
     skillsTitle: 'Umiejętności',
     skillGroups: [
-      { title: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Vite', 'responsywne UI'] },
+      { title: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'responsywne UI'] },
       { title: 'Backend i dane', items: ['Supabase', 'bazy danych', 'logowanie', 'integracje API'] },
-      { title: 'Mobile i gry', items: ['aplikacje mobilne', 'publikacje w Google Play', 'mechaniki gier'] },
+      { title: 'Mobile i gry', items: ['Unity', 'Flutter', 'Flame', 'React Native (Expo)', 'publikacje w Google Play'] },
       { title: 'Produkty AI', items: ['workflow z AI', 'prototypowanie', 'automatyzacje'] },
       { title: 'Produkt', items: ['myślenie founderowe', 'waitlisty', 'launch', 'wystąpienia publiczne'] },
     ],
