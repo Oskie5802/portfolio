@@ -456,6 +456,10 @@ export const Cv: React.FC = () => {
                 <div className="cv-print-contact-card rounded-2xl border border-white/[0.07] bg-[#0c0c0c]/70 px-4 py-3 text-[#8f8f8f] print:border-[#e5e5e5] print:bg-white print:text-[#333]">
                   {t.availability}
                 </div>
+                <a href={links.portfolio} className="cv-print-contact-card hidden items-center gap-3 rounded-2xl border border-white/[0.07] bg-[#0c0c0c]/70 px-4 py-3 print:flex print:border-[#e5e5e5] print:bg-white print:text-[#111]">
+                  <Globe size={16} className="text-[#777]" />
+                  oskarminor.com
+                </a>
               </div>
             </div>
           </motion.header>
@@ -535,6 +539,7 @@ export const Cv: React.FC = () => {
                 </div>
               </Section>
 
+              <div className="cv-no-print">
               <Section title={t.contact}>
                 <div className="grid gap-3 text-sm">
                   <a href={links.email} className="flex items-center gap-3 text-[#cfcfcf] transition-colors hover:text-white print:text-[#111]">
@@ -555,6 +560,7 @@ export const Cv: React.FC = () => {
                   </ExternalAnchor>
                 </div>
               </Section>
+              </div>
             </aside>
           </div>
         </motion.div>
