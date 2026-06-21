@@ -12,6 +12,7 @@ import keepyImg from '../icons/keepy.png';
 import czytajdalejImg from '../icons/czytajdalej.png';
 import safelabsImg from '../icons/safelabs.png';
 import { Background } from '../components/Background';
+import { useLanguage, type Lang } from '../lib/useLanguage';
 
 // Custom X (Twitter) icon component
 const XIcon = ({ className }: { className?: string }) => (
@@ -104,75 +105,104 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, titleNode, description
 const CATEGORIES = ['All', 'Social', 'Web', 'Mobile', 'Desktop'] as const;
 type Category = typeof CATEGORIES[number];
 
+// Stable project data (everything that doesn't change between languages)
+type ProjectMeta = {
+  id: string;
+  title: string;
+  category: Category;
+  href: string;
+  icon?: string;
+  iconNode?: React.ReactNode;
+  role: string;
+};
+
+const PROJECTS: ProjectMeta[] = [
+  { id: 'omni', title: 'Omni', category: 'Desktop', href: 'https://heyomni.app', icon: omniosImg, role: 'Co-founder' },
+  { id: 'safelabs', title: 'SafeLabs', category: 'Social', href: 'https://safelabs.pl', icon: safelabsImg, role: 'Co-creator & Public presenter' },
+  { id: 'strescto', title: 'streść.to', category: 'Web', href: 'https://strescto.pl', icon: stresctoImg, role: 'Founder' },
+  { id: 'keepy', title: 'Keepy', category: 'Mobile', href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.keepy&hl=pl', icon: keepyImg, role: 'Creator & CEO ronimstudio' },
+  { id: 'motur', title: 'Motur', category: 'Mobile', href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.motar', icon: moturImg, role: 'Creator & CEO ronimstudio' },
+  { id: 'iamdog', title: 'I Am Dog', category: 'Mobile', href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.iamdog', icon: iamdogImg, role: 'Creator & CEO ronimstudio' },
+  { id: 'hungrypiggy', title: 'Hungry Piggy', category: 'Mobile', href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.hitacoin', icon: hungrypiggyImg, role: 'Creator & CEO ronimstudio' },
+  { id: 'audiolab', title: 'Audio Lab', category: 'Desktop', href: 'https://github.com/Oskie5802/audiolab', iconNode: <Music className="w-7 h-7 text-[#444] group-hover:text-[#777] transition-colors duration-200" />, role: 'Creator' },
+];
+
+// The motto stays in English on purpose - it's the line that sounds like me.
+const MOTTO = 'If you need something, just do it yourself instead of looking for it.';
+
+const COPY: Record<Lang, {
+  tagline: string;
+  categories: Record<Category, string>;
+  featuredLabel: string;
+  projectsLabel: string;
+  building: string;
+  founderTag: string;
+  czytajdalej: string;
+  descriptions: Record<string, string>;
+}> = {
+  en: {
+    tagline: '17.',
+    categories: { All: 'All', Social: 'Social', Web: 'Web', Mobile: 'Mobile', Desktop: 'Desktop' },
+    featuredLabel: 'Featured',
+    projectsLabel: 'Projects',
+    building: 'Building',
+    founderTag: 'Founder',
+    czytajdalej: "A peer-to-peer book-lending app, built entirely by me.",
+    descriptions: {
+      omni: "A smart AI assistant for the desktop, built with a friend. Now discontinued.",
+      safelabs: "Cybersecurity workshops for primary schoolers. Built with friends, run live in front of a crowd.",
+      strescto: "Turns Polish school readings into clean mind maps you can actually study from.",
+      keepy: "Keeps your receipts in order - warranty periods and return windows included.",
+      motur: "Strava for motorcyclists.",
+      iamdog: "A dog simulator made for kids.",
+      hungrypiggy: "A mobile arcade game where it all comes down to landing the coin.",
+      audiolab: "My music player was missing one feature I wanted, so I wrote my own.",
+    },
+  },
+  pl: {
+    tagline: '17 lat.',
+    categories: { All: 'Wszystkie', Social: 'Social', Web: 'Web', Mobile: 'Mobile', Desktop: 'Desktop' },
+    featuredLabel: 'Wyróżnione',
+    projectsLabel: 'Projekty',
+    building: 'W budowie',
+    founderTag: 'Founder',
+    czytajdalej: "Aplikacja do wypożyczania książek między ludźmi (P2P), w całości stworzona przeze mnie.",
+    descriptions: {
+      omni: "Inteligentny asystent AI na komputer, tworzony z kolegą. Porzucony.",
+      safelabs: "Warsztaty z cyberbezpieczeństwa dla podstawówek. Robione ze znajomymi, prowadzone na żywo przed publicznością.",
+      strescto: "Zamienia lektury w przejrzyste mapy myśli, z których naprawdę da się uczyć.",
+      keepy: "Trzyma porządek w paragonach - wraz z okresami gwarancji i terminami zwrotów.",
+      motur: "Strava dla motocyklistów.",
+      iamdog: "Symulator psa dla dzieci.",
+      hungrypiggy: "Zręcznościowa gra mobilna, w której wszystko sprowadza się do trafienia monetą.",
+      audiolab: "Mojemu odtwarzaczowi brakowało jednej funkcji, więc napisałem własny.",
+    },
+  },
+};
+
+const LangSwitch: React.FC<{ lang: Lang; onChange: (l: Lang) => void }> = ({ lang, onChange }) => (
+  <div className="fixed top-5 right-5 z-50 flex items-center rounded-full border border-white/[0.08] bg-[#111]/80 p-0.5 backdrop-blur-md">
+    {(['en', 'pl'] as Lang[]).map(code => (
+      <button
+        key={code}
+        onClick={() => onChange(code)}
+        aria-pressed={lang === code}
+        className={`rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors duration-150 ${
+          lang === code ? 'bg-white/[0.1] text-[#e0e0e0]' : 'text-[#555] hover:text-[#999]'
+        }`}
+      >
+        {code}
+      </button>
+    ))}
+  </div>
+);
+
 export const Home: React.FC = () => {
+  const { lang, setLang } = useLanguage();
+  const t = COPY[lang];
   const [activeCategory, setActiveCategory] = useState<Category>('All');
 
-  const allProjects = [
-    {
-      title: 'Omni',
-      category: 'Desktop' as Category,
-      description: 'Finds your lost files, installs apps, manages your email and calendar, and almost anything else - just by asking.',
-      href: 'https://heyomni.app',
-      icon: omniosImg,
-      role: 'Co-founder',
-    },
-    {
-      title: 'SafeLabs',
-      category: 'Social' as Category,
-      description: 'Interactive cybersecurity workshops for primary school students, built with friends and presented live at public events.',
-      href: 'https://safelabs.pl',
-      icon: safelabsImg,
-      role: 'Co-creator & Public presenter',
-    },
-    {
-      title: 'streść.to',
-      category: 'Web' as Category,
-      description: 'Understand any Polish school reading in minutes - character profiles, plot breakdowns and key themes in one place.',
-      href: 'https://strescto.pl',
-      icon: stresctoImg,
-      role: 'Founder',
-    },
-    {
-      title: 'Keepy',
-      category: 'Mobile' as Category,
-      description: 'Scan and digitize paper receipts, track warranties and never miss a return deadline again.',
-      href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.keepy&hl=pl',
-      icon: keepyImg,
-      role: 'Creator & CEO ronimstudio',
-    },
-    {
-      title: 'Motur',
-      category: 'Mobile' as Category,
-      description: 'Track your rides, discover new routes with AI, share your adventures and compete with riders. Strava for motorcyclists.',
-      href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.motar',
-      icon: moturImg,
-      role: 'Creator & CEO ronimstudio',
-    },
-    {
-      title: 'I Am Dog',
-      category: 'Mobile' as Category,
-      description: 'Dog simulator for kids - explore the world as a dog, complete missions and unlock new levels.',
-      href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.iamdog',
-      icon: iamdogImg,
-      role: 'Creator & CEO ronimstudio',
-    },
-    {
-      title: 'Hungry Piggy',
-      category: 'Mobile' as Category,
-      description: 'Arcade game - flick coins into the world\'s hungriest piggy bank using your finger as the catapult.',
-      href: 'https://play.google.com/store/apps/details?id=com.ronimstudio.hitacoin',
-      icon: hungrypiggyImg,
-      role: 'Creator & CEO ronimstudio',
-    },
-    {
-      title: 'Audio Lab',
-      category: 'Desktop' as Category,
-      description: 'My audio player lacked a feature I needed, so I built my own.',
-      href: 'https://github.com/Oskie5802/audiolab',
-      iconNode: <Music className="w-7 h-7 text-[#444] group-hover:text-[#777] transition-colors duration-200" />,
-      role: 'Creator',
-    },
-  ];
+  const allProjects = PROJECTS.map(p => ({ ...p, description: t.descriptions[p.id] }));
 
   const filteredProjects = activeCategory === 'All'
     ? allProjects
@@ -181,6 +211,7 @@ export const Home: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#0c0c0c] text-[#e0e0e0] selection:bg-white selection:text-[#0c0c0c]">
       <Background />
+      <LangSwitch lang={lang} onChange={setLang} />
 
       <main className="max-w-4xl mx-auto px-6 pt-24 pb-32 relative z-10">
         <motion.div
@@ -196,7 +227,7 @@ export const Home: React.FC = () => {
                   Oskar Minor
                 </h1>
                 <p className="text-base md:text-lg text-[#666] leading-relaxed max-w-md mb-8">
-                  17y developer from Poland. <br /> If you need something, just do it yourself instead of looking for it.
+                  {t.tagline} <br /> {MOTTO}
                 </p>
                 <div className="flex items-center gap-5">
                   <SocialLink href="https://github.com/oskie5802" icon={<Github size={17} />} label="GitHub" />
@@ -222,7 +253,7 @@ export const Home: React.FC = () => {
           {/* Featured Projects */}
           <section className="mb-16">
             <motion.div variants={itemVariants}>
-              <h2 className="text-[11px] uppercase tracking-[0.25em] text-[#444] font-semibold mb-6">Featured</h2>
+              <h2 className="text-[11px] uppercase tracking-[0.25em] text-[#444] font-semibold mb-6">{t.featuredLabel}</h2>
 
               {/* czytaj dalej */}
               <a
@@ -251,17 +282,17 @@ export const Home: React.FC = () => {
                 <div className="flex-1 min-w-0 relative">
                   <div className="flex flex-wrap items-center gap-1.5 mb-3">
                     <span className="px-2 py-0.5 rounded-md bg-black/[0.05] text-[#c96447] text-[10px] uppercase tracking-widest font-medium">
-                      Building
+                      {t.building}
                     </span>
                     <span className="px-2 py-0.5 rounded-md bg-black/[0.05] text-black/40 text-[10px] uppercase tracking-widest font-medium">
-                      Founder
+                      {t.founderTag}
                     </span>
                   </div>
                   <h3 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
                     <span style={{ color: '#1a1008' }}>czytaj</span><span style={{ color: '#c96447' }}>dalej</span>
                   </h3>
                   <p className="text-[#7a6a5e] text-[15px] leading-relaxed max-w-xl group-hover:text-[#5a4a3e] transition-colors duration-200">
-                    Share books with people around you. Find what's worth reading - from your neighbours, not algorithms.
+                    {t.czytajdalej}
                   </p>
                 </div>
               </a>
@@ -271,7 +302,7 @@ export const Home: React.FC = () => {
           {/* Other Projects */}
           <section>
             <motion.div variants={itemVariants} className="flex flex-col gap-4 mb-5">
-              <h2 className="text-[11px] uppercase tracking-[0.25em] text-[#444] font-semibold">Projects</h2>
+              <h2 className="text-[11px] uppercase tracking-[0.25em] text-[#444] font-semibold">{t.projectsLabel}</h2>
               <div className="flex flex-wrap gap-1">
                 {CATEGORIES.map(cat => (
                   <button
@@ -283,7 +314,7 @@ export const Home: React.FC = () => {
                         : 'text-[#444] hover:text-[#777]'
                     }`}
                   >
-                    {cat}
+                    {t.categories[cat]}
                   </button>
                 ))}
               </div>
